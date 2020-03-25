@@ -1,0 +1,33 @@
+{
+  "name": "zeropoint",
+  "version": "0.0.1",
+  "description": "A simple Node app with SQLite as a database management system, instantly up and running.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "sqlite3": "^4.1.1",
+    "discord.js": "^11.5.1",
+    "jsonstore.io": "^1.1.0",
+    "axios": "^0.19.2",
+    "math.js": "^1.1.46",
+    "events": "^3.0.0",
+    "util": "^0.12.1",
+    "ytdl-core": "^1.0.7",
+    "node-opus": "^0.3.2"
+  },
+  "engines": {
+    "node": "8.x"
+  },
+  "repository": {
+    "url": "https://glitch.com/edit/#!/hello-sqlite"
+  },
+  "license": "MIT",
+  "keywords": [
+    "node",
+    "glitch",
+    "express"
+  ]
+}

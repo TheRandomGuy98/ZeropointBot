@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Zeropoint Community</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="description" content="The site of the OFFICIALZEROPOINT channel and Discord server.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" href="https://cdn.glitch.com/ea459c75-9b0f-466b-af0c-6ed48bdc46a1%2FZPC_Round-Logo-2019.png?v=1576342132193">
+    
+    <!-- import the webpage's client-side javascript file -->
+    <script src="/client.js" defer></script>
+    <style>
+      .info-area {
+        width: 100%;
+        height: 100%;
+      }
+      #zp-chat {
+        height: 800px;
+        width: 500px;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Zeropoint Community</h1>
+        <nav>
+          <ul>
+            <li><a href="/"><span>Home</span></a></li>
+            <li><a href="/about"><span>About</span></a></li>
+            <li class="active"><span>Social</span></li>
+            <li><a href="/uploads"><span>Uploads</span></a></li>
+            <li><a href="/discord"><span>Join Discord</span></a></li>
+          </ul>
+        </nav>
+    </header>
+    <main>
+      <div class="info-area" id="zp-twitch-embed">
+<!--         <iframe id="zp-discord" frameborder="0" scrolling="yes" src="https://discordapp.com/"></iframe> -->
+        <iframe id="zp-chat" frameborder="0" scrolling="yes" src="https://www.twitch.tv/embed/officialzeropoint/chat"></iframe>
+      </div>
+    </main>
+    <footer></footer>
+  </body>
+</html>
