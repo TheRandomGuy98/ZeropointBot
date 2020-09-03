@@ -6,7 +6,8 @@ module.exports = {
     name: `queue`,
     description: `View the song queue.`,
     usage: null,
-    aliases: [`q`]
+    aliases: [`q`],
+    category: `music`
 }
 
 module.exports.run = async(client, message, args) => {

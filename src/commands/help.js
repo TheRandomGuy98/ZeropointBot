@@ -6,8 +6,8 @@ module.exports = {
 	name: `help`,
 	description: `View info about commands.`,
 	usage: `[command name]`,
-	cooldown: null,
-    aliases: [`commands`, `?`, `h`]
+    aliases: [`commands`, `?`, `h`],
+    category: `miscellaneous`
 }
 
 module.exports.run = async(client, message, args) => {
@@ -15,8 +15,18 @@ module.exports.run = async(client, message, args) => {
 
     if(!args[0]) {
         let helpTxt = ``;
-        client.commands.forEach(cmd => cmd.name != `dev` && cmd.name != `` ? helpTxt += `\`${config.prefix + cmd.name + (cmd.usage !== null ? ` ${cmd.usage}`: ``)}\` - ${cmd.description}\n`: null);
 
+        let mod = client.commands.filter(cmd => cmd.category == `moderation`);
+        let music = client.commands.filter(cmd => cmd.category == `music`);
+        let misc = client.commands.filter(cmd => cmd.category == `miscellaneous`);
+
+            helpTxt += `**Moderation**\n`;
+            mod.forEach(cmd => cmd.name != `dev` && cmd.name != `` ? helpTxt += `\`${config.prefix + cmd.name + (cmd.usage !== null ? ` ${cmd.usage}`: ``)}\` - ${cmd.description}\n`: null);
+            helpTxt += `\n**Music**\n`;
+            music.forEach(cmd => cmd.name != `dev` && cmd.name != `` ? helpTxt += `\`${config.prefix + cmd.name + (cmd.usage !== null ? ` ${cmd.usage}`: ``)}\` - ${cmd.description}\n`: null);
+            helpTxt += `\n**Miscellaneous**\n`;
+            misc.forEach(cmd => cmd.name != `dev` && cmd.name != `` ? helpTxt += `\`${config.prefix + cmd.name + (cmd.usage !== null ? ` ${cmd.usage}`: ``)}\` - ${cmd.description}\n`: null);
+        
         let sEmbed = new Discord.RichEmbed()
             .setColor(0xcfcf53)
             .setAuthor(`Help Menu`)

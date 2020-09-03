@@ -6,7 +6,8 @@ module.exports = {
     name: `nowplaying`,
     description: `Replys with the song that is currently playing`,
     usage: null,
-    aliases: [`np`]
+    aliases: [`np`],
+    category: `music`
 }
 
 module.exports.run = async(client, message, args) => {

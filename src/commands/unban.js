@@ -6,11 +6,13 @@ module.exports = {
     name: `unban`,
     description: `Unban a user.`,
     usage: `<user>`,
-    aliases: null
+    aliases: null,
+    category: `moderation`
 }
 
 module.exports.run = async(client, message, args) => {
     const m = `${message.author} »`;
+    if(!config.developerIDs.includes(message.author.id) && !message.member.hasPermission(`BAN_MEMBERS`)) return message.channel.send(`${m} You can't use that!`);
 
     let unbanMember;
     if(args[0]) {
@@ -25,7 +27,7 @@ module.exports.run = async(client, message, args) => {
     unbanMember = bans.find(user => user.id == unbanMember.id);
     let reason = args.slice(1).join(` `);
 
-    if(bannedUser) {
+    if(unbanMember) {
         message.guild.members.unban(`${unbanMember.id}`, `${reason}`);
         message.channel.send(`Succesfully unbanned **${unbanMember.user.tag}**.`);
     }

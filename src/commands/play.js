@@ -8,7 +8,8 @@ module.exports = {
     name: `play`,
     description: `Play a song!`,
     usage: `<song>`,
-    aliases: [`p`]
+	aliases: [`p`],
+	category: `music`
 }
 
 module.exports.run = async(client, message, args) => {

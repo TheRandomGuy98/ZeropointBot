@@ -6,7 +6,8 @@ module.exports = {
     name: `stop`,
     description: `Stop playing songs.`,
     usage: null,
-    aliases: null
+    aliases: null,
+    category: `music`
 }
 
 module.exports.run = async(client, message, args) => {

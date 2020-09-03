@@ -6,9 +6,11 @@ const { config, client } = require(`../index.js`);
 client.on(`message`, async message => {
     const m = `${message.author} » `;
 
+    //if(message.content.toLowerCase().split(` `).includes(`zoom`)) client.commands.get(`ban`).run(client, message, [message.author.id, `Zoom`, `Raider`]);
+
     /* Botception & Message Handling */
     if(message.author.bot || message.channel.type == `dm`) return;
-    if(message.content.slice(0, config.prefix.length).toString().toLowerCase() != config.prefix) return;
+    if(message.content.slice(0, config.prefix.length).toString().toLowerCase() != config.prefix && message.content.slice(0, config.prefix.length).toString() != `Z!`) return;
 
     /* Get Commands & Arguments */
     const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
@@ -21,7 +23,7 @@ client.on(`message`, async message => {
     else if((cmd.usage) && args.length < (cmd.usage.split(`<`).length) - 1) return message.channel.send(`${m} Proper usage is \`${config.prefix + cmd.name} ${cmd.usage}\`.`);
     else {    
         try {
-          if(message.author.id == `479108585570172930`) return message.channel.send(`pi.ProcessError returned undefined`);
+        //   if(message.author.id == `479108585570172930`) return message.channel.send(`pi.ProcessError returned undefined`);
             console.log('\x1b[35m',`${message.author.tag} ran command ${command} in ${message.guild.name} [${message.guild.id}].`);
             cmd.run(client, message, args);
         }

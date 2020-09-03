@@ -9,8 +9,7 @@ const ytdl = require(`ytdl-core`);
 const config = require(`../config/config`);
 const client = new Discord.Client({
     disableEveryone: true,
-    fetchAllMembers: true, 
-    sync: true
+    fetchAllMembers: true
 });
 
 const mongoDB = require(`mongodb`);

@@ -6,7 +6,8 @@ module.exports = {
     name: `ping`,
     description: `Shows ping.`,
     usage: null,
-    aliases: null
+    aliases: null,
+    category: `miscellaneous`
 }
 
 module.exports.run = async(client, message, args) => {

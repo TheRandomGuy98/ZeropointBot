@@ -5,8 +5,8 @@ const userSchema = new Mongoose.Schema({
         type: Boolean,
         required: true        
     },
-    stickyRoles: {
-        type: Array,
+    xp: {
+        type: Number,
         required: true
-    }
+    },
 });

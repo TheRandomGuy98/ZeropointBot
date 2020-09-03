@@ -5,8 +5,9 @@ const User = require(`../models/user.model`);
 module.exports = {
     name: `volume`,
     description: `Adjust volume.`,
-    usage: null,
-    aliases: [`v`]
+    usage: `<amount>`,
+    aliases: [`v`],
+    category: `music`
 }
 
 module.exports.run = async(client, message, args) => {

@@ -6,7 +6,8 @@ module.exports = {
     name: `dev`,
     description: `None of your beezwax, Lignus Tech Tzips`,
     usage: null,
-    aliases: null
+    aliases: null,
+    category: `dev`
 }
 
 module.exports.run = async(client, message, args) => {

@@ -6,7 +6,8 @@ module.exports = {
     name: `resume`,
     description: `Resumes music if paused.`,
     usage: null,
-    aliases: null
+    aliases: null,
+    category: `music`
 }
 
 module.exports.run = async(client, message, args) => {

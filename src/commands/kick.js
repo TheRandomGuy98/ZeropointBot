@@ -4,14 +4,15 @@ const User = require(`../models/user.model`);
 
 module.exports = {
     name: `kick`,
-    description: ``,
+    description: `Kick a user.`,
     usage: null,
-    aliases: null
+    aliases: null,
+    category: `moderation`
 }
 
 module.exports.run = async(client, message, args) => {
     const m = `${message.author} »`;
-    if(!config.developerIDs.includes(message.author.id) || message.member.hasPermission(`kick_MEMBERS`)) return message.channel.send(`${m} You can't use that!`);
+    if(!config.developerIDs.includes(message.author.id) && !message.member.hasPermission(`kick_MEMBERS`)) return message.channel.send(`${m} You can't use that!`);
 
     let kickMember;
     if(args[0]) {
@@ -19,12 +20,12 @@ module.exports.run = async(client, message, args) => {
         if(!kickMember) {
             kickMember = args[0];
             if(isNaN(parseInt(kickMember))) return message.channel.send(`${m} That is an invalid user ID!`);
-            kickMember = await message.guild.members.get(kickMember);
+            kickMember = await client.users.get(kickMember);
         }
     }
 
     if(!kickMember) return message.channel.send(`${m} Please specify a valid member of this server!`);
-    else if(!config.developerIDs.includes(kickMember.id) || kickMember.kickable || kickMember.hasPermission(`MANAGE_SERVER`) || (kickMember.roles.some(r => [`ENFORCEMENT TIME`, `Founder`, `Manager`, `Staff`].includes(r.name)))) return message.channel.send(`${message.author} That user is a mod / admin.`);
+    else if(config.developerIDs.includes(kickMember.id) || !kickMember.kickable || (kickMember.roles.some(r => [`ENFORCEMENT TIME`, `Founder`, `Staff`, `Security`].includes(r.name)))) return message.channel.send(`${message.author} That user is a mod / admin.`);
 
     let kickReason = args.slice(1).join(` `) || `No reason provided.`;
 
@@ -34,6 +35,7 @@ module.exports.run = async(client, message, args) => {
         message.channel.send(`Failed to kick ${kickMember}. Please contact a developer.`);
         console.error(err);
     }).then(() => {
+        message.delete();
         message.channel.send(`**${kickMember.user.tag}** was kicked: **${kickReason}**.`);
     });
 }
