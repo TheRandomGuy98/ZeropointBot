@@ -1,3 +1,4 @@
+const User = require(`../src/models/user.model`);
 const yts = require(`yt-search`);
 
 module.exports = {
@@ -31,6 +32,34 @@ module.exports = {
     },
     rng: (min, max) => {
         return Math.floor(Math.random() * (max + 1 - min) + min); 
+    }, 
+    searchYoutube: async(args) => yts(args),
+    getLeaderboard: async() => {
+        let lbUsers = await User.find({ banned: false });
+        let lb = [];
+    
+        for(let i in lbUsers) {
+            lb.push({
+                xp: lbUsers[i].xp,
+                id: lbUsers[i].discordID,
+                level: lbUsers[i].level,
+                messages: lbUsers[i].stats.messageCount
+            });
+        }
+        lb.sort((a, b) => (a.xp <= b.xp) ? 1: -1);
+        return lb;
     },
-    searchYoutube: async(args) => yts(args)
+    standardize: int => {
+        let a = 0;
+        let mAT = ``;
+        int.toString().split(``).reverse().forEach(n => {
+            a++;
+            mAT += ((a - 1) % 3) == 0 ? `,${n}`: n;
+        });
+
+        return mAT.slice(1).split(``).reverse().join(``);
+    },
+    calculateExp: level => {
+        return Math.floor(((100 * Math.E * level)) + 250);
+    }
 }

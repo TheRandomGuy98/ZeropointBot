@@ -25,6 +25,6 @@ module.exports.run = async(client, message, args) => {
     else {
         serverQueue.songs = [];
         message.client.queue.delete(message.guild.id);
-        message.channel.send(`${m} I am not in a voice channel!`)
+        message.channel.send(`${m} I am not in a voice channel!`);
     }
 }

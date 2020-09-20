@@ -10,9 +10,11 @@ module.exports = {
     category: `moderation`
 }
 
+let rolePerms = [`ENFORCEMENT TIME`, `Founder`, `Staff`, `Security`];
+
 module.exports.run = async(client, message, args) => {
     const m = `${message.author} »`;
-    if(!config.developerIDs.includes(message.author.id) && !message.member.hasPermission(`BAN_MEMBERS`)) return message.channel.send(`${m} You can't use that!`);
+    if(!config.developerIDs.includes(message.author.id) && !message.member.roles.some(r => rolePerms.includes(r.name))) return message.channel.send(`${m} You can't use that!`);
 
     let banMember;
     if(args[0]) {
@@ -25,7 +27,7 @@ module.exports.run = async(client, message, args) => {
     }
 
     if(!banMember && isNaN(parseInt(args[0]))) return message.channel.send(`${m} Please specify a valid member of this server!`);
-    else if(config.developerIDs.includes(banMember.id) || !banMember.bannable || (banMember.roles.some(r => [`ENFORCEMENT TIME`, `Founder`, `Staff`, `Security`].includes(r.name)))) return message.channel.send(`${message.author} That user is a mod / admin.`);
+    else if(config.developerIDs.includes(banMember.id) || !banMember.bannable || (banMember.roles.some(r => rolePerms.includes(r.name)))) return message.channel.send(`${message.author} That user is a mod / admin.`);
 
     let banReason = args.slice(1).join(` `) || `No reason provided.`;
 

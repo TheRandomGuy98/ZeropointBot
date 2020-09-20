@@ -5,14 +5,16 @@ const User = require(`../models/user.model`);
 module.exports = {
     name: `kick`,
     description: `Kick a user.`,
-    usage: null,
+    usage: `<user>`,
     aliases: null,
     category: `moderation`
 }
 
+let rolePerms = [`ENFORCEMENT TIME`, `Founder`, `Staff`, `Security`];
+
 module.exports.run = async(client, message, args) => {
     const m = `${message.author} »`;
-    if(!config.developerIDs.includes(message.author.id) && !message.member.hasPermission(`kick_MEMBERS`)) return message.channel.send(`${m} You can't use that!`);
+    if(!config.developerIDs.includes(message.author.id) && !message.member.roles.some(r => rolePerms.includes(r.name))) return message.channel.send(`${m} You can't use that!`);
 
     let kickMember;
     if(args[0]) {
@@ -25,7 +27,7 @@ module.exports.run = async(client, message, args) => {
     }
 
     if(!kickMember) return message.channel.send(`${m} Please specify a valid member of this server!`);
-    else if(config.developerIDs.includes(kickMember.id) || !kickMember.kickable || (kickMember.roles.some(r => [`ENFORCEMENT TIME`, `Founder`, `Staff`, `Security`].includes(r.name)))) return message.channel.send(`${message.author} That user is a mod / admin.`);
+    else if(config.developerIDs.includes(kickMember.id) || !kickMember.kickable || (kickMember.roles.some(r => rolePerms.includes(r.name)))) return message.channel.send(`${message.author} That user is a mod / admin.`);
 
     let kickReason = args.slice(1).join(` `) || `No reason provided.`;
 

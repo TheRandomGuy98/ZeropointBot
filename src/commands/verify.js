@@ -15,5 +15,21 @@ module.exports.run = async(client, message, args) => {
     if(message.channel.name != `verification`) return message.delete();
     else if(message.member.roles.has(config.roles.member)) return message.channel.send(`${m} You have already verified yourself!`);
 
-    message.channel.send(`${m} You have been verified!`).then(() => message.member.addRole(config.roles.member));
+    const user = new User({
+        banned: false,
+        cooldowns: {
+            xp: 0
+        },
+        discordID: message.author.id,
+        xp: 0,
+        level: 0,
+        stats: {
+            messageCount: 0
+        }
+    });
+
+    user.save(err => {
+        message.channel.send(`${m} ${err ? `There was an error processing your request.`: `You have been verified!`}`);
+        if(!err) message.member.addRoles(config.roles.member);
+    });
 }

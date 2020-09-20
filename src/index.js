@@ -9,7 +9,8 @@ const ytdl = require(`ytdl-core`);
 const config = require(`../config/config`);
 const client = new Discord.Client({
     disableEveryone: true,
-    fetchAllMembers: true
+    fetchAllMembers: true,
+    sync: true
 });
 
 const mongoDB = require(`mongodb`);
@@ -35,6 +36,7 @@ fs.readdir(`${__dirname}/events/`, (err, files) => {
 
     jsFiles.forEach(f => client.events.set(f.split(`.`)[0], require(`./events/${f}`)));
     console.log(`\x1b[32m`,`Loaded ${jsFiles.length} event${jsFiles.length === 1 ? null: `s`}!`);
+    console.log(`\x1b[37m`);
 });
 
 /* Load Commands */
@@ -51,6 +53,7 @@ fs.readdir(`${__dirname}/commands/`, (err, files) => {
     });
 
     console.log(`\x1b[32m`,`Loaded ${jsFiles.length} command${jsFiles.length === 1 ? ``: `s`}!`);
+    console.log(`\x1b[37m`);
 });
 
 client.queue = new Map();
