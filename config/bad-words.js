@@ -1,1 +1,0 @@
-module.exports = [`n1gga`, `n1gger`, `nazi`, `nigg3r`, `nigg4h`, `nigga`, `niggah`, `niggas`, `niggaz`, `nigger`, `niggers`, `serbia`];
