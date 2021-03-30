@@ -6,9 +6,8 @@ import * as path from 'path';
 
 import * as mongoose from 'mongoose';
 
-import { config } from '../config/config.js';
-
-import { log, logHeader, logSplash } from './utils/log.js';
+import { config } from '../config/config';
+import { log, logHeader, logSplash } from './utils/log';
 
 dotenv.config();
 
@@ -28,7 +27,7 @@ logSplash();
 
 // Load events.
 logHeader();
-const eventFiles = fs.readdirSync(path.resolve(__dirname, `./events`)).filter(file => file.endsWith(`js`));
+const eventFiles = fs.readdirSync(path.resolve(__dirname, `./events`)).filter(file => file.endsWith(`ts`));
 for (const file of eventFiles) {
     const event = require(`./events/${file}`);
 
@@ -39,7 +38,7 @@ for (const file of eventFiles) {
 // Load commands.
 logHeader();
 client.commands = [];
-const commandFiles = fs.readdirSync(path.resolve(__dirname, `./commands`)).filter(file => file.endsWith(`js`));
+const commandFiles = fs.readdirSync(path.resolve(__dirname, `./commands`)).filter(file => file.endsWith(`ts`));
 for (const file of commandFiles) {
     const command = require(`./commands/${file}`);
 

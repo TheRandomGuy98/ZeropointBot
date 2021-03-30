@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
+    "dev": "ts-node-dev --ignore-watch data ./src/index.ts",
     "dev:lint": "eslint . --fix --ext .ts"
   },
   "repository": {
@@ -12,9 +13,9 @@
     "url": "git+https://github.com/DamienVesper/ZeropointBot.git"
   },
   "keywords": [
-    "zeropointbruh",
-    "baitemnet",
-    "scam"
+    "typescript",
+    "discord.js",
+    "alru"
   ],
   "author": "DamienVesper",
   "license": "ISC",
@@ -35,6 +36,7 @@
     "@typescript-eslint/parser": "^4.20.0",
     "eslint": "^7.23.0",
     "eslint-config-standard": "^16.0.2",
+    "ts-node-dev": "^1.1.6",
     "typescript": "^4.2.3"
   }
 }
