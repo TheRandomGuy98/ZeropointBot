@@ -10,9 +10,7 @@ import { config } from '../config/config';
 import { log, logHeader, logSplash } from './utils/log';
 
 dotenv.config();
-
 mongoose.connect(config.db.uri, config.db.uriParams);
-log(`green`, `Connected to database.`);
 
 export interface Client extends Discord.Client {
     commands?: any[]
