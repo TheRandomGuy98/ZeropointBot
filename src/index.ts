@@ -43,13 +43,13 @@ logHeader();
 client.commands = [];
 const commandFiles = fs.readdirSync(path.resolve(__dirname, `./commands`));
 for (const file of commandFiles) {
-    const command = require(`./commands/${file}`).default;
+    const command = require(`./commands/${file}`);
 
     log(`yellow`, `Loaded command ${file}.`);
     client.commands.push({
         name: file.split(`.`)[0],
-        desc: command.desc,
-        usage: command.usage,
+        desc: command.default.desc,
+        usage: command.default.usage,
         run: command.run
     });
 }
