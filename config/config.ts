@@ -1,7 +1,7 @@
+import { version } from '../package.json';
+
 import * as dotenv from 'dotenv';
 dotenv.config();
-
-const pjson = require(`../package.json`);
 
 const conf = {
     developers: [`386940319666667521`],
@@ -21,10 +21,8 @@ const conf = {
         }
     },
 
-    version: pjson.version,
-    footer: `Created by DamienVesper#0001`
+    version,
+    footer: `Created by DamienVesper#0001 | v${version}`
 };
-
-conf.footer += ` | v${conf.version}`;
 
 export const config = conf;
