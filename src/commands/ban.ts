@@ -1,5 +1,8 @@
 import { config } from '../../config/config';
 
+import { cleanse } from '../utils/functions';
+import { log } from '../utils/log';
+
 import * as Discord from 'discord.js';
 import { Client } from '../index';
 
@@ -22,6 +25,7 @@ export const run = async (client: Client, message: Discord.Message, args: any[])
 
     const banReason = args[1] || `No reason provided.`;
 
+    banMember.send(`You were banned from **${message.guild.name}** for ${cleanse(banReason)}.`).catch(() => log(`red`, `Could not DM ${banMember.user.tag} their ban reason.`));
     banMember.ban(banReason).then(() => {
         const sEmbed: Discord.MessageEmbed = new Discord.MessageEmbed()
             .setAuthor(`Member Banned`)
