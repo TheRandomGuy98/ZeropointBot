@@ -14,15 +14,18 @@ dotenv.config();
 mongoose.connect(config.db.uri, config.db.uriParams);
 log(`green`, `Connected to database.`);
 
-const client: any = new Discord.Client({
+export interface Client extends Discord.Client {
+    commands?: any[]
+    events?: any[]
+}
+
+const client: Client = new Discord.Client({
     disableMentions: `all`
 });
 
 // Uncaught handler.
 process.on(`uncaughtException`, e => log(`red`, e.stack));
 
-// Export client.
-module.exports = client;
 logSplash();
 
 // Load events.
