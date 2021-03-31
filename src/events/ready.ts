@@ -7,7 +7,7 @@ export default async (client: Client) => {
 
     client.user.setPresence({
         activity: {
-            name: `${client.users.cache.size} players in Torn.Space`,
+            name: `${client.users.cache.size} members in Alliance Reunited`,
             type: `WATCHING`
         },
         status: `dnd`
