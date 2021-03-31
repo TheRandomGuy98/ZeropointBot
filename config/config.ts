@@ -19,6 +19,8 @@ const conf = {
         `757137548530286613`
     ],
 
+    logChannel: `826956913290903592`,
+
     serverStats: {
         enabled: false,
         members: ``,

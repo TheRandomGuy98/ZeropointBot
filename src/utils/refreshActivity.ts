@@ -1,4 +1,5 @@
 import { Client } from '../index';
+import { config } from '../../config/config';
 
 export const refreshActivity = (client: Client) => {
     client.user.setPresence({

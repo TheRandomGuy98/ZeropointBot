@@ -33,6 +33,7 @@ export const run = async (client: Client, message: Discord.Message, args: any[])
             .setDescription(`${banMember.user.tag} was banned: ${banReason}`)
             .setFooter(config.footer);
 
+        client.channels.fetch(config.logChannel).then((channel: Discord.TextChannel) => channel.send(sEmbed));
         return message.channel.send(sEmbed);
     });
 };
