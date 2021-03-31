@@ -30,7 +30,7 @@ logSplash();
 
 // Load events.
 logHeader();
-const eventFiles = fs.readdirSync(path.resolve(__dirname, `./events`)).filter(file => file.endsWith(`ts`));
+const eventFiles = fs.readdirSync(path.resolve(__dirname, `./events`));
 for (const file of eventFiles) {
     const event = require(`./events/${file}`);
 
@@ -41,7 +41,7 @@ for (const file of eventFiles) {
 // Load commands.
 logHeader();
 client.commands = [];
-const commandFiles = fs.readdirSync(path.resolve(__dirname, `./commands`)).filter(file => file.endsWith(`ts`));
+const commandFiles = fs.readdirSync(path.resolve(__dirname, `./commands`));
 for (const file of commandFiles) {
     const command = require(`./commands/${file}`);
 
