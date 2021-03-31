@@ -21,7 +21,7 @@ export const run = async (client: Client, message: Discord.Message, args: any[])
 
     if (!messageMember.permissions.has(`BAN_MEMBERS`)) return message.channel.send(`${m} You can't use that!`);
     else if (!banMember) return message.channel.send(`${m} That person is not a member of the server!`);
-    else if (!banMember.bannable) return message.channel.send(`${m} I cannot ban that user!`);
+    else if (!banMember.bannable || banMember.roles.cache.some(role => config.staffRoles.includes(role.id))) return message.channel.send(`${m} I cannot ban that user!`);
 
     const banReason = args[1] || `No reason provided.`;
 
