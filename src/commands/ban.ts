@@ -26,7 +26,9 @@ export const run = async (client: Client, message: Discord.Message, args: any[])
         const sEmbed = new Discord.MessageEmbed()
             .setAuthor(`Member Banned`)
             .setColor(0xf82055)
-            .setDescription(`${banMember.user.tag} was banned`)
+            .setDescription(`${banMember.user.tag} was banned: ${banReason}`)
             .setFooter(config.footer);
+
+        return message.channel.send(sEmbed);
     });
 };
