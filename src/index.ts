@@ -35,7 +35,7 @@ for (const file of eventFiles) {
     const event = require(`./events/${file}`);
 
     log(`yellow`, `Loaded event ${file}.`);
-    client.on(file.split(`.`)[0], event.bind(null, client));
+    client.on(file.split(`.`)[0], event.default.bind(null, client));
 }
 
 // Load commands.
