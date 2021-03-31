@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "prod": "pm2 start ./build/index.js",
     "dist": "node ./build/index.js",
+    "prod": "pm2 start ./build/index.js",
     "dev": "ts-node-dev --ignore-watch data ./src/index.ts",
     "dev:lint": "eslint . --fix --ext .ts"
   },
