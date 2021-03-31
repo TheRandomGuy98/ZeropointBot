@@ -23,7 +23,7 @@ export const run = async (client: Client, message: Discord.Message, args: any[])
     const banReason = args[1] || `No reason provided.`;
 
     banMember.ban(banReason).then(() => {
-        const sEmbed = new Discord.MessageEmbed()
+        const sEmbed: Discord.MessageEmbed = new Discord.MessageEmbed()
             .setAuthor(`Member Banned`)
             .setColor(0xf82055)
             .setDescription(`${banMember.user.tag} was banned: ${banReason}`)
