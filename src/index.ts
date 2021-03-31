@@ -18,7 +18,8 @@ export interface Client extends Discord.Client {
 }
 
 const client: Client = new Discord.Client({
-    disableMentions: `all`
+    disableMentions: `all`,
+    fetchAllMembers: true
 });
 
 // Uncaught handler.
