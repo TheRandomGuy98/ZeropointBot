@@ -18,7 +18,7 @@ export interface Client extends Discord.Client {
 }
 
 const client: Client = new Discord.Client({
-    disableMentions: `all`,
+    disableMentions: `everyone`,
     fetchAllMembers: true
 });
 
