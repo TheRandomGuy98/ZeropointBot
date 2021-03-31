@@ -1,4 +1,3 @@
-
 export const cleanse = (str: string) => {
     return str
         .replace(`\`\`\``, `\\\`\\\`\\\``)
