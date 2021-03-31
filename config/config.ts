@@ -7,6 +7,10 @@ const conf = {
     developers: [`386940319666667521`],
     prefix: `z!`,
 
+    colors: {
+        danger: 0xf82055
+    },
+
     staffRoles: [
         `757079571903545444`,
         `757129188195958835`,

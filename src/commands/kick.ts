@@ -23,17 +23,18 @@ export const run = async (client: Client, message: Discord.Message, args: any[])
     else if (!kickMember) return message.channel.send(`${m} That person is not a member of the server!`);
     else if (!kickMember.kickable || kickMember.roles.cache.some(role => config.staffRoles.includes(role.id))) return message.channel.send(`${m} I cannot kick that user!`);
 
-    const kickReason = args[1] || `No reason provided.`;
+    args.shift();
+    const kickReason = args.join(` `) || `No reason provided.`;
 
     kickMember.send(`You were kicked from **${message.guild.name}** for ${cleanse(kickReason)}.`).catch(() => log(`red`, `Could not DM ${kickMember.user.tag} their kick reason.`));
     kickMember.kick(kickReason).then(() => {
         const sEmbed: Discord.MessageEmbed = new Discord.MessageEmbed()
-            .setAuthor(`Member Kickned`)
-            .setColor(0xf82055)
-            .setDescription(`${kickMember.user.tag} was kicked: ${kickReason}`)
+            .setAuthor(`Member Kicked | ${kickMember.user.tag}`)
+            .setColor(config.colors.danger)
+            .setDescription(`${kickMember} was kicked: ${kickReason}\nResponsible Moderator: ${message.author}`)
             .setFooter(config.footer);
 
-        client.channels.fetch(config.logChannel).then((channel: Discord.TextChannel) => channel.send(sEmbed));
+        message.delete();
         return message.channel.send(sEmbed);
     });
 };

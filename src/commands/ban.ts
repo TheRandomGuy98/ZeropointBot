@@ -23,17 +23,18 @@ export const run = async (client: Client, message: Discord.Message, args: any[])
     else if (!banMember) return message.channel.send(`${m} That person is not a member of the server!`);
     else if (!banMember.bannable || banMember.roles.cache.some(role => config.staffRoles.includes(role.id))) return message.channel.send(`${m} I cannot ban that user!`);
 
-    const banReason = args[1] || `No reason provided.`;
+    args.shift();
+    const banReason = args.join(` `) || `No reason provided.`;
 
     banMember.send(`You were banned from **${message.guild.name}** for ${cleanse(banReason)}.`).catch(() => log(`red`, `Could not DM ${banMember.user.tag} their ban reason.`));
-    banMember.ban(banReason).then(() => {
+    banMember.ban({ reason: banReason }).then(() => {
         const sEmbed: Discord.MessageEmbed = new Discord.MessageEmbed()
-            .setAuthor(`Member Banned`)
-            .setColor(0xf82055)
-            .setDescription(`${banMember.user.tag} was banned: ${banReason}`)
+            .setAuthor(`Member Banned | ${banMember.user.tag}`)
+            .setColor(config.colors.danger)
+            .setDescription(`${banMember} was banned: ${banReason}\nResponsible Moderator: ${message.author}`)
             .setFooter(config.footer);
 
-        client.channels.fetch(config.logChannel).then((channel: Discord.TextChannel) => channel.send(sEmbed));
+        message.delete();
         return message.channel.send(sEmbed);
     });
 };
