@@ -32,10 +32,10 @@ logSplash();
 logHeader();
 const eventFiles = fs.readdirSync(path.resolve(__dirname, `./events`));
 for (const file of eventFiles) {
-    const event = require(`./events/${file}`);
+    const event = require(`./events/${file}`).default;
 
     log(`yellow`, `Loaded event ${file}.`);
-    client.on(file.split(`.`)[0], event.default.bind(null, client));
+    client.on(file.split(`.`)[0], event.bind(null, client));
 }
 
 // Load commands.
@@ -43,7 +43,7 @@ logHeader();
 client.commands = [];
 const commandFiles = fs.readdirSync(path.resolve(__dirname, `./commands`));
 for (const file of commandFiles) {
-    const command = require(`./commands/${file}`);
+    const command = require(`./commands/${file}`).default;
 
     log(`yellow`, `Loaded command ${file}.`);
     client.commands.push({
