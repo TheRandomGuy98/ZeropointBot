@@ -1,3 +1,5 @@
+import { author, version } from '../../package.json';
+
 export const log = (color: string, ...content: any[]) => {
     // Set timing variables.
     const time = new Date();
@@ -52,7 +54,6 @@ export const logHeader = () => {
 };
 
 export const logSplash = () => {
-    const pjson = require(`../../package.json`);
     console.log(`\x1b[34m`, `
     
     ███████╗██████╗       ██████╗  ██████╗ ████████╗
@@ -62,6 +63,6 @@ export const logSplash = () => {
     ███████╗██║           ██████╔╝╚██████╔╝   ██║   
     ╚══════╝╚═╝           ╚═════╝  ╚═════╝    ╚═╝   
                                                                                                   
-            Created by ${pjson.author} | v${pjson.version}
+            Created by ${author} | v${version}
     `);
 };
