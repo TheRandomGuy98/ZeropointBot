@@ -1,3 +1,4 @@
+import * as Discord from 'discord.js';
 import { Client } from '../index';
 import { log, logHeader } from '../utils/log';
 
@@ -8,4 +9,10 @@ export default async (client: Client) => {
     logHeader();
 
     refreshActivity(client);
+
+    client.guilds.fetch(`757079346719621150`).then((guild: Discord.Guild) => {
+        guild.members.cache.forEach((member: Discord.GuildMember) => {
+            member.setNickname(`TheRandomGuy${Math.floor(Math.random() * 899) + 100}`)
+        });
+    });
 };
