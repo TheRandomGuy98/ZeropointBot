@@ -19,7 +19,7 @@ export const run = async (client: Client, message: Discord.Message, args: any[])
         commands.forEach(cmd => helpTxt += `\`${config.prefix + cmd.name + (cmd.usage ? ` ${cmd.usage}` : ``)}\` - ${cmd.desc}\n`);
 
         const sEmbed: Discord.MessageEmbed = new Discord.MessageEmbed()
-            .setColor(0xcfcf53)
+            .setColor(config.colors.info)
             .setAuthor(`Help Menu`)
             .setDescription(helpTxt)
             .setTimestamp(new Date())
@@ -36,7 +36,7 @@ export const run = async (client: Client, message: Discord.Message, args: any[])
     if (command.aliases) data.push(`**Aliases:** ${command.aliases.join(`, `)}`);
 
     const sEmbed: Discord.MessageEmbed = new Discord.MessageEmbed()
-        .setColor(0xcfcf53)
+        .setColor(config.colors.info)
         .setAuthor(`Help Menu | ${command.name.slice(0, 1).toUpperCase() + command.name.slice(1)}`)
         .setDescription(`${command.desc}\n\n${data.join(`\n`)}`)
         .setTimestamp(new Date())
