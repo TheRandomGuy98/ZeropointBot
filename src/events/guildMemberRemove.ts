@@ -4,7 +4,7 @@ import * as Discord from 'discord.js';
 import { Client } from '../index';
 
 export default async (client: Client, member: Discord.GuildMember) => {
-    const memberIsBanned = member.guild.fetchBans().then(bans => bans.find(member => member.user.id === memberIsBanned.user.id));
+    const memberIsBanned = member.guild.fetchBans().then(bans => bans.find(ban => ban.user.id === member.user.id));
     if (memberIsBanned) return;
 
     const sEmbed: Discord.MessageEmbed = new Discord.MessageEmbed()
