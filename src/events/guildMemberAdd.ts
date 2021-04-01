@@ -1,9 +1,12 @@
 import { config } from '../../config/config';
+import { refreshActivity } from '../utils/refreshActivity';
 
 import * as Discord from 'discord.js';
 import { Client } from '../index';
 
 export default async (client: Client, member: Discord.GuildMember) => {
+    refreshActivity(client);
+
     const sEmbed: Discord.MessageEmbed = new Discord.MessageEmbed()
         .setAuthor(`Member Joined | ${member.user.tag}`)
         .setThumbnail(member.user.avatarURL())
