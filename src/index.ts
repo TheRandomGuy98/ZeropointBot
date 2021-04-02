@@ -11,7 +11,6 @@ import { log, logHeader, logSplash } from './utils/log';
 
 dotenv.config();
 mongoose.connect(config.db.uri, config.db.uriParams);
-
 export interface Client extends Discord.Client {
     commands?: any[]
     events?: any[]
@@ -49,6 +48,7 @@ for (const file of commandFiles) {
         name: file.split(`.`)[0],
         desc: command.default.desc,
         usage: command.default.usage,
+        aliases: command.default.aliases,
         run: command.run
     });
 }

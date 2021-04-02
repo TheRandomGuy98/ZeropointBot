@@ -7,5 +7,5 @@ export const refreshActivity = (client: Client) => {
             type: `WATCHING`
         },
         status: `dnd`
-    });    
+    });
 };
