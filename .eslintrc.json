@@ -10,7 +10,12 @@
         "eslint:recommended"
     ],
     "parser": "@typescript-eslint/parser",
-    "plugins": ["@typescript-eslint"],
+    "plugins": [
+        "@typescript-eslint",
+        "import",
+        "node",
+        "promise"
+    ],
     "parserOptions": {
         "ecmaVersion": 6
     },
