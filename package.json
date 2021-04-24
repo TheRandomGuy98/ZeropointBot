@@ -26,10 +26,12 @@
   },
   "homepage": "https://github.com/DamienVesper/ZeropointBot#readme",
   "dependencies": {
+    "@discordjs/opus": "^0.5.0",
     "axios": "^0.21.1",
     "discord.js": "^12.5.1",
     "dotenv": "^8.2.0",
-    "mongoose": "^5.12.3"
+    "mongoose": "^5.12.3",
+    "ytdl-core": "^4.5.0"
   },
   "devDependencies": {
     "@types/node": "^14.14.37",
