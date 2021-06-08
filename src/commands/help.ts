@@ -16,7 +16,9 @@ export const run = async (client: Client, message: Discord.Message, args: any[])
 
     if (!args[0]) {
         let helpTxt = ``;
-        commands.forEach(cmd => helpTxt += `\`${config.prefix + cmd.name + (cmd.usage ? ` ${cmd.usage}` : ``)}\` - ${cmd.desc}\n`);
+        commands.forEach(cmd => {
+            helpTxt += `\`${config.prefix + cmd.name + (cmd.usage ? ` ${cmd.usage}` : ``)}\` - ${cmd.desc}\n`;
+        });
 
         const sEmbed: Discord.MessageEmbed = new Discord.MessageEmbed()
             .setColor(config.colors.info)
