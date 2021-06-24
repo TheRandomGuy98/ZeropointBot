@@ -25,23 +25,23 @@
   },
   "homepage": "https://github.com/DamienVesper/ZeropointBot#readme",
   "dependencies": {
-    "@discordjs/opus": "^0.5.0",
+    "@discordjs/opus": "^0.5.3",
     "axios": "^0.21.1",
     "discord.js": "^12.5.1",
     "dotenv": "^10.0.0",
     "ffmpeg-static": "^4.3.0",
-    "mongoose": "^5.12.13",
+    "mongoose": "^5.12.14",
     "ytdl-core": "^4.8.2"
   },
   "devDependencies": {
     "@types/node": "^15.6.1",
-    "@typescript-eslint/eslint-plugin": "^4.26.1",
+    "@typescript-eslint/eslint-plugin": "^4.28.0",
     "@typescript-eslint/parser": "^4.28.0",
     "eslint": "^7.28.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.0",
-    "typescript": "^4.3.2"
+    "typescript": "^4.3.4"
   }
 }
