@@ -31,7 +31,7 @@
     "dotenv": "^10.0.0",
     "ffmpeg-static": "^4.3.0",
     "mongoose": "^5.12.14",
-    "ytdl-core": "^4.8.2"
+    "ytdl-core": "^4.8.3"
   },
   "devDependencies": {
     "@types/node": "^15.6.1",
