@@ -1,0 +1,10 @@
+[Unit]
+Description=Alliance Reunited Discord bot.
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/ZeropointBot
+ExecStart=/bin/bash /usr/bin/yarn dist
+
+[Install]
+WantedBy=multi-user.target
