@@ -1,17 +1,17 @@
-import { config } from '../../config/config';
+import config from '../../../config/config';
 
-import { cleanse } from '../utils/functions';
-import { log } from '../utils/logExtra';
+import * as Discord from 'discord.js-light';
+import { Client, CommandConfig } from '../../types/discord';
 
-import * as Discord from 'discord.js';
-import { Client } from '../index';
+import { cleanse } from '../../utils/functions';
+import log from '../../utils/log';
 
-export default {
+const cmd: CommandConfig = {
     desc: `Ban a user.`,
     usage: `<user>`
 };
 
-export const run = async (client: Client, message: Discord.Message, args: any[]) => {
+const run = async (client: Client, message: Discord.Message, args: string[]) => {
     const m = `${message.author} »`;
 
     const banMemberId = message.mentions.members.first()?.id || args[0];
@@ -24,17 +24,23 @@ export const run = async (client: Client, message: Discord.Message, args: any[])
     else if (!banMember.bannable || banMember.roles.cache.some(role => config.staffRoles.includes(role.id))) return message.channel.send(`${m} I cannot ban that user!`);
 
     args.shift();
+
     const banReason = args.join(` `) || `No reason provided.`;
 
     banMember.send(`You were banned from **${message.guild.name}** for ${cleanse(banReason)}.`).catch(() => log(`red`, `Could not DM ${banMember.user.tag} their ban reason.`));
     banMember.ban({ reason: banReason }).then(() => {
         const sEmbed: Discord.MessageEmbed = new Discord.MessageEmbed()
             .setAuthor(`Member Banned | ${banMember.user.tag}`)
-            .setColor(config.colors.danger)
+            .setColor(config.colors.red)
             .setDescription(`${banMember} was banned: ${banReason}\nResponsible Moderator: ${message.author}`)
             .setFooter(config.footer);
 
         message.delete();
         return message.channel.send(sEmbed);
     });
+};
+
+export {
+    cmd,
+    run
 };

@@ -1,17 +1,15 @@
 import { version } from '../package.json';
 
+import colors from './colors';
+
 import * as dotenv from 'dotenv';
 dotenv.config();
 
-const conf = {
-    developers: [`386940319666667521`],
+const config = {
+    developerID: `386940319666667521`,
     prefix: `z!`,
 
-    colors: {
-        danger: 0xf82055,
-        success: 0x47d66d,
-        info: 0xcfcf53
-    },
+    colors,
 
     staffRoles: [
         `757079571903545444`,
@@ -45,4 +43,4 @@ const conf = {
     footer: `Created by DamienVesper#0001 | v${version}`
 };
 
-export const config = conf;
+export default config;

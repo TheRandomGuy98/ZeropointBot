@@ -1,8 +1,8 @@
-import { config } from '../../config/config';
-import { refreshActivity } from '../utils/refreshActivity';
+import * as Discord from 'discord.js-light';
+import { Client } from '../../types/discord';
 
-import * as Discord from 'discord.js';
-import { Client } from '../index';
+import config from '../../../config/config';
+import refreshActivity from '../../utils/refreshActivity';
 
 export default async (client: Client, member: Discord.GuildMember) => {
     refreshActivity(client);
@@ -13,7 +13,7 @@ export default async (client: Client, member: Discord.GuildMember) => {
     const sEmbed: Discord.MessageEmbed = new Discord.MessageEmbed()
         .setAuthor(`Member Left | ${member.user.tag}`)
         .setThumbnail(member.user.avatarURL())
-        .setColor(config.colors.danger)
+        .setColor(config.colors.red)
         .setDescription(`${member.user} left or was kicked from the server.`)
         .setTimestamp(new Date())
         .setFooter(config.footer);

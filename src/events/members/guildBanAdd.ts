@@ -1,13 +1,13 @@
-import { config } from '../../config/config';
+import * as Discord from 'discord.js-light';
+import { Client } from '../../types/discord';
 
-import * as Discord from 'discord.js';
-import { Client } from '../index';
+import config from '../../../config/config';
 
 export default async (client: Client, guild: Discord.Guild, user: Discord.User) => {
     const sEmbed: Discord.MessageEmbed = new Discord.MessageEmbed()
         .setAuthor(`Member Banned | ${user.tag}`)
         .setThumbnail(user.avatarURL())
-        .setColor(config.colors.danger)
+        .setColor(config.colors.red)
         .setDescription(`${user} was banned from the server.`)
         .setTimestamp(new Date())
         .setFooter(config.footer);
