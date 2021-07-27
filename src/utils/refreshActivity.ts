@@ -1,11 +1,23 @@
-import { Client } from '../index';
+import { Client } from '../types/discord';
+import log from './log';
 
-export const refreshActivity = (client: Client) => {
-    client.user.setPresence({
+/**
+ * Refresh the activity of the client.
+ * @param client The Discord client to use.
+ */
+const refreshActivity = async (client: Client) => {
+    log(`cyan`, `Updating status...`);
+
+    await client.user.setPresence({
         activity: {
-            name: `${client.users.cache.size} members in Alliance Reunited`,
+            name: `${client.users.cache.size} users`,
             type: `WATCHING`
         },
-        status: `dnd`
+
+        status: `online`
     });
+
+    log(`green`, `Status updated.`);
 };
+
+export default refreshActivity;

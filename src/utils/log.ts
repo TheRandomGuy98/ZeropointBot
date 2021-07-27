@@ -1,18 +1,25 @@
-import { author, version } from '../../package.json';
-
-export const log = (color: string, ...content: any[]) => {
+/**
+ * Log something to console.
+ * @author DamienVesper
+ * @param color The color to log as.
+ * @param content The content to log.
+ */
+const log = (color: string, ...content: any[]) => {
     // Set timing variables.
     const time = new Date();
+
     const second = time.getSeconds().toString().padStart(2, `0`);
     const minute = time.getMinutes().toString().padStart(2, `0`);
     const hour = time.getHours().toString().padStart(2, `0`);
+
     const day = time.getDate().toString().padStart(2, `0`);
     const month = (time.getMonth() + 1).toString().padStart(2, `0`);
     const year = time.getFullYear().toString();
+
     const formattedTime = `[${month}-${day}-${year} ${hour}:${minute}:${second}]`;
 
     // Get specified color.
-    let logColor;
+    let logColor: string;
     switch (color) {
         case `black`:
             logColor = `\x1b[30m`;
@@ -35,7 +42,7 @@ export const log = (color: string, ...content: any[]) => {
         case `cyan`:
             logColor = `\x1b[36m`;
             break;
-        case `white`:
+        default:
             logColor = `\x1b[37m`;
             break;
     }
@@ -49,20 +56,4 @@ export const log = (color: string, ...content: any[]) => {
     console.log(logColor || `\x1b[37m`, formattedTime, logContent);
 };
 
-export const logHeader = () => {
-    console.log(`\x1b[34m`, `--------------------------------------------------`);
-};
-
-export const logSplash = () => {
-    console.log(`\x1b[34m`, `
-    
-    ███████╗██████╗       ██████╗  ██████╗ ████████╗
-    ╚══███╔╝██╔══██╗      ██╔══██╗██╔═══██╗╚══██╔══╝
-      ███╔╝ ██████╔╝█████╗██████╔╝██║   ██║   ██║   
-     ███╔╝  ██╔═══╝ ╚════╝██╔══██╗██║   ██║   ██║   
-    ███████╗██║           ██████╔╝╚██████╔╝   ██║   
-    ╚══════╝╚═╝           ╚═════╝  ╚═════╝    ╚═╝   
-                                                                                                  
-            Created by ${author} | v${version}
-    `);
-};
+export default log;

@@ -1,4 +1,4 @@
-export const cleanse = (str: string) => {
+const cleanse = (str: string) => {
     return str
         .replace(`\`\`\``, `\\\`\\\`\\\``)
         .replace(`\``, `\\\``)
@@ -8,3 +8,5 @@ export const cleanse = (str: string) => {
         .replace(`**`, `\\*\\*`)
         .replace(`*`, `\\*`);
 };
+
+export { cleanse };

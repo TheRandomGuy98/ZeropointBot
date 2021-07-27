@@ -1,5 +1,5 @@
 import { Client } from '../index';
-import { log, logHeader } from '../utils/log';
+import { log, logHeader } from '../utils/logExtra';
 
 import { refreshActivity } from '../utils/refreshActivity';
 import playLinus from '../utils/playLinus';

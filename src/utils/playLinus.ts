@@ -1,7 +1,7 @@
 import * as Discord from 'discord.js';
-import { Client } from '../index';
+import { Client } from '../types/discord';
 
-import * as ytdl from 'ytdl-core';
+import ytdl from 'ytdl-core';
 
 const getFreeTechTips = (connection: Discord.VoiceConnection) => connection.play(ytdl(`https://www.youtube.com/watch?v=PKfxmFU3lWY`));
 

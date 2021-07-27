@@ -2,7 +2,7 @@ import * as Discord from 'discord.js';
 import { Client } from '../index';
 
 import { config } from '../../config/config';
-import { log } from '../utils/log';
+import { log } from '../utils/logExtra';
 
 export default async (client: Client, message: Discord.Message) => {
     const m = `${message.author} »`;

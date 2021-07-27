@@ -1,7 +1,7 @@
 import { config } from '../../config/config';
 
 import { cleanse } from '../utils/functions';
-import { log } from '../utils/log';
+import { log } from '../utils/logExtra';
 
 import * as Discord from 'discord.js';
 import { Client } from '../index';
