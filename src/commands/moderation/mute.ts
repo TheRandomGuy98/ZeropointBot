@@ -31,7 +31,7 @@ const run = async (client: Client, message: Discord.Message, args: string[]) => 
         const sEmbed: Discord.MessageEmbed = new Discord.MessageEmbed()
             .setAuthor(`Member Muted | ${muteMember.user.tag}`)
             .setColor(config.colors.red)
-            .setDescription(`**User**: ${muteMember}\n **Reason:** ${muteMember}\n**Responsible Moderator:** ${message.author}`)
+            .setDescription(`**User**: ${muteMember}\n **Reason:** ${muteReason}\n**Responsible Moderator:** ${message.author}`)
             .setFooter(config.footer);
 
         message.delete();
