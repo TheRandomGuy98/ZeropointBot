@@ -10,7 +10,7 @@ const refreshActivity = async (client: Client) => {
 
     await client.user.setPresence({
         activity: {
-            name: `${client.users.cache.size} users`,
+            name: `${(await (await client.guilds.fetch(`757079346719621150`)).members.fetch()).size} members...`,
             type: `WATCHING`
         },
 
