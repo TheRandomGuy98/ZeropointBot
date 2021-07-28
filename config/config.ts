@@ -15,12 +15,6 @@ const config = {
 
     logChannel: `826956913290903592`,
 
-    serverStats: {
-        enabled: false,
-        members: ``,
-        memberGoal: ``
-    },
-
     db: {
         uri: process.env.MONGO_URI,
         uriParams: {
