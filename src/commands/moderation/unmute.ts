@@ -25,9 +25,9 @@ const run = async (client: Client, message: Discord.Message, args: string[]) => 
     unmuteMember.send(`You were unmuted in **${message.guild.name}**.`).catch(() => log(`red`, `Could not DM ${unmuteMember.user.tag} their mute reason.`));
     unmuteMember.roles.remove(await message.guild.roles.fetch(config.roles.muted)).then(() => {
         const sEmbed: Discord.MessageEmbed = new Discord.MessageEmbed()
-            .setAuthor(`Member Muted | ${unmuteMember.user.tag}`)
+            .setAuthor(`Member Unmuted | ${unmuteMember.user.tag}`)
             .setColor(config.colors.red)
-            .setDescription(`${unmuteMember} was unmuted.\nResponsible Moderator: ${message.author}`)
+            .setDescription(`**User**: ${unmuteMember}\n**Responsible Moderator:* ${message.author}`)
             .setFooter(config.footer);
 
         message.delete();
