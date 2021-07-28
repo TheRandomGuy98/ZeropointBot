@@ -2,9 +2,11 @@ import * as Discord from 'discord.js-light';
 
 interface CommandConfig {
     desc: string;
+    category: string;
     usage?: string;
     aliases?: string[];
 }
+
 interface Command {
     config: CommandConfig;
     run: any;

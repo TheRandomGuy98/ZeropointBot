@@ -8,7 +8,8 @@ import log from '../../utils/log';
 
 const cmd: CommandConfig = {
     desc: `Unmute a user.`,
-    usage: `<user>`
+    usage: `<user>`,
+    category: `moderation`
 };
 
 const run = async (client: Client, message: Discord.Message, args: string[]) => {

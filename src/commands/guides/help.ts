@@ -5,7 +5,8 @@ import { Client, CommandConfig } from '../../types/discord';
 
 const cmd: CommandConfig = {
     desc: `View all commands.`,
-    aliases: [`h`, `?`]
+    aliases: [`h`, `?`],
+    category: `guides`
 };
 
 const run = async (client: Client, message: Discord.Message, args: string[]) => {

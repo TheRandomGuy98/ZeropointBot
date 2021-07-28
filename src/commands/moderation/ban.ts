@@ -8,7 +8,8 @@ import log from '../../utils/log';
 
 const cmd: CommandConfig = {
     desc: `Ban a user.`,
-    usage: `<user> [reason]`
+    usage: `<user> [reason]`,
+    category: `moderation`
 };
 
 const run = async (client: Client, message: Discord.Message, args: string[]) => {
