@@ -7,6 +7,13 @@ import log from '../../utils/log';
 export default async (client: Client, message: Discord.Message) => {
     const m = `${message.author} »`;
 
+    // We don't have S&Box keys!
+    if (message.content.toLowerCase().includes(`s&box`) || message.content.toLowerCase().includes(`sbox`)) {
+        message.delete();
+        message.author.send(`We do not have S&box keys. The video linking it to our Discord was not uploaded by us, and we have no relation to it.\nPlease, when you have the chance, report said video so it gets removed.`)
+            .catch(() => log(`red`, `Failed to DM S&box warning to ${message.author.tag}`));
+    }
+
     // Botception and prefix handling.
     if (message.author.bot || message.channel.type === `dm`) return;
     if (message.content.slice(0, config.prefix.length).toString().toLowerCase() !== config.prefix) return;
