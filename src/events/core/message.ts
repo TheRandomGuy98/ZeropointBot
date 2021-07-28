@@ -7,6 +7,9 @@ import log from '../../utils/log';
 export default async (client: Client, message: Discord.Message) => {
     const m = `${message.author} »`;
 
+    // Botception.
+    if (message.author.bot || message.channel.type === `dm`) return;
+
     // We don't have S&Box keys!
     if (message.content.toLowerCase().includes(`s&box`) || message.content.toLowerCase().includes(`sbox`)) {
         message.delete();
@@ -14,8 +17,7 @@ export default async (client: Client, message: Discord.Message) => {
             .catch(() => log(`red`, `Failed to DM S&box warning to ${message.author.tag}`));
     }
 
-    // Botception and prefix handling.
-    if (message.author.bot || message.channel.type === `dm`) return;
+    // Prefix handling.
     if (message.content.slice(0, config.prefix.length).toString().toLowerCase() !== config.prefix) return;
 
     // Parse arguments and command.
