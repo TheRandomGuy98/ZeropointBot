@@ -30,7 +30,7 @@ const run = async (client: Client, message: Discord.Message, args: string[]) => 
         const sEmbed: Discord.MessageEmbed = new Discord.MessageEmbed()
             .setAuthor(`Member Kicked | ${kickMember.user.tag}`)
             .setColor(config.colors.red)
-            .setDescription(`**User**: ${kickMember}\n **Reason:** ${kickMember}\n**Responsible Moderator:* ${message.author}`)
+            .setDescription(`**User**: ${kickMember}\n **Reason:** ${kickMember}\n**Responsible Moderator:** ${message.author}`)
             .setFooter(config.footer);
 
         message.delete();
