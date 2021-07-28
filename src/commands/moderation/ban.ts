@@ -31,7 +31,7 @@ const run = async (client: Client, message: Discord.Message, args: string[]) => 
         const sEmbed: Discord.MessageEmbed = new Discord.MessageEmbed()
             .setAuthor(`Member Banned | ${banMember.user.tag}`)
             .setColor(config.colors.red)
-            .setDescription(`**User**: ${banMember}\n **Reason:** ${banReason}\n**Responsible Moderator:** ${message.author}`)
+            .setDescription(`**Reason:** ${banReason}\n**Responsible Moderator:** ${message.author.tag}`)
             .setFooter(config.footer);
 
         message.delete();

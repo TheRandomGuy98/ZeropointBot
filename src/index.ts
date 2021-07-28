@@ -7,8 +7,6 @@ import log from './utils/log';
 import * as logExtra from './utils/logExtra';
 import * as loader from './modules/loader';
 
-import playLinus from './utils/playLinus';
-
 import * as dotenv from 'dotenv';
 dotenv.config();
 
@@ -46,8 +44,6 @@ const startBot = async () => {
 
     logExtra.logHeader();
     await client.login(process.env.DISCORD_TOKEN).catch(() => log(`red`, `Failed to authenticate client with application.`));
-
-    await playLinus(client);
 };
 
 // Initialize the project.
