@@ -1,6 +1,7 @@
 import { version } from '../package.json';
 
 import colors from './colors';
+import roles from './roles';
 
 import * as dotenv from 'dotenv';
 dotenv.config();
@@ -10,18 +11,7 @@ const config = {
     prefix: `z!`,
 
     colors,
-
-    staffRoles: [
-        `757079571903545444`,
-        `757129188195958835`,
-        `803350600355151923`,
-        `803348603833679923`,
-        `815381270845587458`,
-        `794357547611193365`,
-        `794361795980558348`,
-        `757137579849154630`,
-        `757137548530286613`
-    ],
+    roles,
 
     logChannel: `826956913290903592`,
 

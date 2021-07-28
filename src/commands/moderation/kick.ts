@@ -3,25 +3,23 @@ import config from '../../../config/config';
 import * as Discord from 'discord.js-light';
 import { Client, CommandConfig } from '../../types/discord';
 
-import { cleanse } from '../../utils/functions';
+import { cleanse, fetchMemberID, fetchMember } from '../../utils/functions';
 import log from '../../utils/log';
 
 const cmd: CommandConfig = {
     desc: `Kick a user.`,
-    usage: `<user>`
+    usage: `<user> [reason]`
 };
 
 const run = async (client: Client, message: Discord.Message, args: string[]) => {
     const m = `${message.author} »`;
+    const kickMember: Discord.GuildMember = await fetchMember(message, args, await fetchMemberID(message, args));
 
-    const kickMemberId = message.mentions.members.first()?.id || args[0];
-
-    const messageMember: Discord.GuildMember = message.guild.members.cache.find(member => member.id === message.author.id);
-    const kickMember: Discord.GuildMember = message.guild.members.cache.find(member => member.id === kickMemberId);
-
-    if (!messageMember.permissions.has(`KICK_MEMBERS`)) return message.channel.send(`${m} You can't use that!`);
+    if (!message.member.permissions.has(`KICK_MEMBERS`)) return message.channel.send(`${m} You can't use that!`);
     else if (!kickMember) return message.channel.send(`${m} That person is not a member of the server!`);
-    else if (!kickMember.kickable || kickMember.roles.cache.some(role => config.staffRoles.includes(role.id))) return message.channel.send(`${m} I cannot kick that user!`);
+
+    else if (kickMember.id === message.author.id) return message.channel.send(`You cannot kick yourself!`);
+    else if (!kickMember.kickable || kickMember.roles.cache.some(role => role.name.includes(`Staff`))) return message.channel.send(`${m} I cannot kick that user!`);
 
     args.shift();
     const kickReason = args.join(` `) || `No reason provided.`;
