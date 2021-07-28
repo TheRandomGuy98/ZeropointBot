@@ -29,7 +29,8 @@ const loadCommands = async (client: Client) => {
             config: {
                 desc: command.cmd.desc,
                 usage: command.cmd.usage || null,
-                aliases: command.cmd.aliases || null
+                aliases: command.cmd.aliases || null,
+                category: command.cmd.category
             },
             run: command.run
         });
