@@ -22,7 +22,7 @@ const cleanse = (str: string) => {
  * @param args The arguments used in the command.
  * @returns Promise<string>
  */
-const fetchMemberID = async (message: Discord.Message, args: string[]) => (message.mentions.members.first()?.id || (await message.guild.members.fetch(args[0]))?.id || args[0]);
+const fetchMemberID = async (message: Discord.Message, args: string[]) => (message.mentions.members.first()?.id || args[0]);
 
 /**
  * Fetch a member from the data supplied.
