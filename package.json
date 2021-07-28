@@ -1,6 +1,6 @@
 {
   "name": "zeropointbot",
-  "version": "1.1.0",
+  "version": "3.0.0",
   "description": "There's no point to it.",
   "main": "index.js",
   "scripts": {
