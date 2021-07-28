@@ -15,14 +15,6 @@ const config = {
 
     logChannel: `826956913290903592`,
 
-    db: {
-        uri: process.env.MONGO_URI,
-        uriParams: {
-            useNewUrlParser: true,
-            useUnifiedTopology: true
-        }
-    },
-
     version,
     footer: `Created by DamienVesper#0001 | v${version}`
 };
