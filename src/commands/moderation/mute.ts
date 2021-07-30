@@ -28,6 +28,9 @@ const run = async (client: Client, message: Discord.Message, args: string[]) => 
 
     muteMember.send(`You were muted in **${message.guild.name}** for ${cleanse(muteReason)}.`).catch(() => log(`red`, `Could not DM ${muteMember.user.tag} their mute reason.`));
     muteMember.roles.add(await message.guild.roles.fetch(config.roles.muted)).then(() => {
+        // If they are in a voice channel, kick them.
+        if (muteMember.voice?.channel) muteMember.voice.kick();
+
         const sEmbed: Discord.MessageEmbed = new Discord.MessageEmbed()
             .setAuthor(`Member Muted | ${muteMember.user.tag}`)
             .setColor(config.colors.red)
