@@ -28,7 +28,7 @@ const run = async (client: Client, message: Discord.Message, args: string[]) => 
     kickMember.send(`You were kicked from **${message.guild.name}** for ${cleanse(kickReason)}.`).catch(() => log(`red`, `Could not DM ${kickMember.user.tag} their kick reason.`));
     kickMember.kick(kickReason).then(() => {
         const sEmbed: Discord.MessageEmbed = new Discord.MessageEmbed()
-            .setAuthor(`Member Kicked | ${kickMember.user.tag}`)
+            .setAuthor(`Member Kicked | ${kickMember.user.tag}`, message.author.avatarURL())
             .setColor(config.colors.red)
             .setDescription(`**Reason:** ${kickReason}\n**Responsible Moderator:** ${message.author.tag}`)
             .setFooter(config.footer);

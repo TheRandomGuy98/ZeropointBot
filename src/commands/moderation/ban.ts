@@ -29,7 +29,7 @@ const run = async (client: Client, message: Discord.Message, args: string[]) => 
     banMember.send(`You were banned from **${message.guild.name}** for ${cleanse(banReason)}.`).catch(() => log(`red`, `Could not DM ${banMember.user.tag} their ban reason.`));
     banMember.ban({ reason: banReason }).then(() => {
         const sEmbed: Discord.MessageEmbed = new Discord.MessageEmbed()
-            .setAuthor(`Member Banned | ${banMember.user.tag}`)
+            .setAuthor(`Member Banned | ${banMember.user.tag}`, message.author.avatarURL())
             .setColor(config.colors.red)
             .setDescription(`**Reason:** ${banReason}\n**Responsible Moderator:** ${message.author.tag}`)
             .setFooter(config.footer);

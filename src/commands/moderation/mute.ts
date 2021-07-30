@@ -36,7 +36,7 @@ const run = async (client: Client, message: Discord.Message, args: string[]) => 
         muteMember.voice.setDeaf(true);
 
         const sEmbed: Discord.MessageEmbed = new Discord.MessageEmbed()
-            .setAuthor(`Member Muted | ${muteMember.user.tag}`)
+            .setAuthor(`Member Muted | ${muteMember.user.tag}`, message.author.avatarURL())
             .setColor(config.colors.red)
             .setDescription(`**Reason:** ${muteReason}\n**Responsible Moderator:** ${message.author.tag}`)
             .setFooter(config.footer);

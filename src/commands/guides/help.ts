@@ -24,7 +24,7 @@ const run = async (client: Client, message: Discord.Message, args: string[]) => 
 
         const sEmbed: Discord.MessageEmbed = new Discord.MessageEmbed()
             .setColor(config.colors.blue)
-            .setAuthor(`Help Menu`)
+            .setAuthor(`Help Menu`, message.guild.iconURL())
             .setDescription(helpTxt)
             .setTimestamp(new Date())
             .setFooter(config.footer);
