@@ -3,11 +3,8 @@ import config from '../../../config/config';
 import * as Discord from 'discord.js';
 import { Client, CommandConfig } from '../../types/discord';
 
-import { cleanse } from '../../utils/functions';
-
 const cmd: CommandConfig = {
-    desc: `View the current song.`,
-    aliases: [`np`],
+    desc: `Pause the music player.`,
     category: `music`
 };
 
@@ -17,18 +14,15 @@ const run = async (client: Client, message: Discord.Message, args: string[]) => 
     if (!message.member.voice.channel) return message.channel.send(`${m} You must be in a voice channel to use this!`);
     if (message.guild.me.voice.channel && message.member.voice.channel.id !== message.guild.me.voice.channel.id) return message.channel.send(`${m} You must be in the same voice channel as me to use this!`);
 
-    if (!client.player.isPlaying(message)) message.channel.send(`${m} There is no song currently playing!`);
+    if (!client.player.isPlaying(message)) return message.channel.send(`${m} There is no song currently playing!`);
+    if (!client.player.isPlaying(message)) return message.channel.send(`${m} The player has already been paused!`);
 
-    const song = client.player.nowPlaying(message);
+    const sEmbed: Discord.MessageEmbed = new Discord.MessageEmbed()
+        .setColor(config.colors.cyan)
+        .setDescription(`🛑 Paused the music`);
 
-    const npEmbed: Discord.MessageEmbed = new Discord.MessageEmbed()
-        .setColor(config.colors.blue)
-        .setAuthor(`Now Playing`, message.guild.iconURL())
-        .setDescription(`[**${cleanse(song.title)}**](${song.url})\nRequested By: **${cleanse(message.author.tag)}**`)
-        .setTimestamp(new Date())
-        .setFooter(config.footer);
-
-    message.channel.send(npEmbed);
+    client.player.pause(message);
+    message.channel.send(sEmbed);
 };
 
 export {

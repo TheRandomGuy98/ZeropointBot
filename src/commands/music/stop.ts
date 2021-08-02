@@ -4,8 +4,7 @@ import * as Discord from 'discord.js';
 import { Client, CommandConfig } from '../../types/discord';
 
 const cmd: CommandConfig = {
-    desc: `Skip the current song.`,
-    aliases: [`skip`],
+    desc: `Stop all music from playing.`,
     category: `music`
 };
 
