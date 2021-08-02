@@ -1,7 +1,7 @@
+import config from '../../../config/config';
+
 import * as Discord from 'discord.js';
 import { Client, CommandConfig } from '../../types/discord';
-
-import { cleanse } from '../../utils/functions';
 
 const cmd: CommandConfig = {
     desc: `Skip the current song.`,
@@ -17,8 +17,12 @@ const run = async (client: Client, message: Discord.Message, args: string[]) => 
 
     if (!client.player.isPlaying(message)) return message.channel.send(`${m} There is no song currently playing!`);
 
-    message.channel.send(`Skipped song **${cleanse(client.player.nowPlaying(message).title)}**.`);
-    client.player.skip(message);
+    const sEmbed: Discord.MessageEmbed = new Discord.MessageEmbed()
+        .setColor(config.colors.cyan)
+        .setDescription(`🛑 Stopped playing music`);
+
+    client.player.stop(message);
+    message.channel.send(sEmbed);
 };
 
 export {

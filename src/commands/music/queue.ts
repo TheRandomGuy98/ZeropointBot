@@ -3,6 +3,7 @@ import config from '../../../config/config';
 import * as Discord from 'discord.js';
 import { Client, CommandConfig } from '../../types/discord';
 
+import { FieldsEmbed } from 'discord-paginationembed';
 import { cleanse } from '../../utils/functions';
 
 const cmd: CommandConfig = {
@@ -21,14 +22,22 @@ const run = async (client: Client, message: Discord.Message, args: string[]) => 
 
     const queue = client.player.getQueue(message);
 
-    const queueEmbed: Discord.MessageEmbed = new Discord.MessageEmbed()
-        .setColor(config.colors.blue)
+    const queueEmbed = new FieldsEmbed()
+        .setArray(queue.tracks.map((tracks, i) => `${i === 0 ? `\`Current\`` : `${i + 1}`}: **${cleanse(tracks.author)} - ${cleanse(tracks.title)}**`))
+        .setAuthorizedUsers([message.author.id])
+        .setChannel((message.channel as Discord.TextChannel))
+        .setElementsPerPage(10)
+        .setPage(1)
+        .setPageIndicator(true)
+        .setDeleteOnTimeout(true)
+        .setDisabledNavigationEmojis([`delete`]);
+
+    queueEmbed.embed
         .setAuthor(`Server Queue`, message.guild.iconURL())
-        .setDescription(`${queue.tracks.map((tracks, i) => `${i === 0 ? `\`Current\`` : `${i + 1}`}: **${cleanse(tracks.author)} - ${cleanse(tracks.title)}**`).join(`\n`)}`)
         .setTimestamp(new Date())
         .setFooter(config.footer);
 
-    message.channel.send(queueEmbed);
+    message.reply(queueEmbed);
 };
 
 export {
