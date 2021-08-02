@@ -10,8 +10,8 @@ const cmd: CommandConfig = {
 
 const run = async (client: Client, message: Discord.Message, args: string[]) => {
     const serverEmbed: Discord.MessageEmbed = new Discord.MessageEmbed()
-        .setAuthor(`Servers`, message.guild.iconURL(), `https://alru.ga/servers`)
         .setColor(config.colors.blue)
+        .setAuthor(`Servers`, message.guild.iconURL(), `https://alru.ga/servers`)
         .addField(`Garry's Mod`, `
             Family Guy DarkRP - [65.21.242.45:9000](https://alru.ga/servers)
             Among Us - [207.225.26.215:65436](https://alru.ga/servers)
