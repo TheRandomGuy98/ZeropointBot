@@ -23,7 +23,7 @@ const run = async (client: Client, message: Discord.Message, args: string[]) => 
     const queueEmbed: Discord.MessageEmbed = new Discord.MessageEmbed()
         .setColor(config.colors.blue)
         .setAuthor(`Server Queue`, message.guild.iconURL())
-        .setDescription(`${queue.tracks.map((tracks, i) => `${i === 0 ? `Current` : `${i + 1}`}- ${tracks.title} : ${tracks.author}`).join(`\n`)}`)
+        .setDescription(`${queue.tracks.map((tracks, i) => `${i === 0 ? `Current` : `${i + 1}`}- ${cleanse(tracks.title)} : ${cleanse(tracks.author)}`).join(`\n`)}`)
         .setTimestamp(new Date())
         .setFooter(config.footer);
 
