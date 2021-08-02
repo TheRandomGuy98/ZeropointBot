@@ -7,8 +7,6 @@ import log from '../../utils/log';
 export default async (client: Client, message: Discord.Message) => {
     const m = `${message.author} »`;
 
-    if (!message?.content) return;
-
     // Botception.
     if (message.author.bot || message.channel.type === `dm`) return;
 
@@ -28,7 +26,7 @@ export default async (client: Client, message: Discord.Message) => {
 
     // Grab the command from the handler.
     const cmd = client.commands.get(command) ||
-        client.commands.get([...client.commands.keys()][[...client.commands.values()].indexOf([...client.commands.values()].find(cmd => cmd.config.aliases.includes(command)))]);
+        client.commands.get([...client.commands.keys()][[...client.commands.values()].indexOf([...client.commands.values()].find(cmd => cmd.config.aliases?.includes(command)))]);
 
     if (!cmd) return;
 
