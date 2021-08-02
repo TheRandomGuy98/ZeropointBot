@@ -1,4 +1,4 @@
-import * as Discord from 'discord.js-light';
+import * as Discord from 'discord.js';
 import { Client } from '../../types/discord';
 
 import config from '../../../config/config';
@@ -6,6 +6,8 @@ import log from '../../utils/log';
 
 export default async (client: Client, message: Discord.Message) => {
     const m = `${message.author} »`;
+
+    if (!message?.content) return;
 
     // Botception.
     if (message.author.bot || message.channel.type === `dm`) return;

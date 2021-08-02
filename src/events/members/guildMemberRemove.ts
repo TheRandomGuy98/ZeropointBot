@@ -1,4 +1,4 @@
-import * as Discord from 'discord.js-light';
+import * as Discord from 'discord.js';
 import { Client } from '../../types/discord';
 
 import config from '../../../config/config';

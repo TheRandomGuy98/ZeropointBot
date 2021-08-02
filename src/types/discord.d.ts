@@ -1,4 +1,5 @@
-import * as Discord from 'discord.js-light';
+import { Player } from 'discord-player';
+import * as Discord from 'discord.js';
 
 interface CommandConfig {
     desc: string;
@@ -19,6 +20,7 @@ interface Event {
 interface Client extends Discord.Client {
     commands?: Map<string, Command>;
     events?: Map<string, Event>;
+    player?: Player;
 }
 
 export {

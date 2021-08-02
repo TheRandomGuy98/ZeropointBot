@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
-import * as Discord from 'discord.js-light';
+import * as Discord from 'discord.js';
 import { Client, CommandConfig } from '../../types/discord';
 
 const cmd: CommandConfig = {

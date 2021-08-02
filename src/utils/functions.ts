@@ -1,4 +1,4 @@
-import Discord from 'discord.js-light';
+import Discord from 'discord.js';
 
 /**
  * Escape Discord's formatting in a string.

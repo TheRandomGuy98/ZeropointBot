@@ -1,6 +1,6 @@
 import config from '../../../config/config';
 
-import * as Discord from 'discord.js-light';
+import * as Discord from 'discord.js';
 import { Client, CommandConfig } from '../../types/discord';
 
 import { cleanse, fetchMemberID, fetchMember } from '../../utils/functions';
