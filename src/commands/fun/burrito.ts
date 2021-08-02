@@ -7,7 +7,7 @@ import { Client, CommandConfig } from '../../types/discord';
 const cmd: CommandConfig = {
     desc: `Coelus' favorite burrito.`,
     aliases: [`breakfastburrito`, `coelus`],
-    category: `misc`
+    category: `fun`
 };
 
 const run = async (client: Client, message: Discord.Message, args: string[]) => {
