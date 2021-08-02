@@ -24,7 +24,7 @@ const run = async (client: Client, message: Discord.Message, args: string[]) => 
     const npEmbed: Discord.MessageEmbed = new Discord.MessageEmbed()
         .setColor(config.colors.blue)
         .setAuthor(`Now Playing`, message.guild.iconURL())
-        .setDescription(`**${cleanse(song.title)}**\nRequested By: **${cleanse(message.author.tag)}**`)
+        .setDescription(`**${cleanse(song.author)} - ${cleanse(song.title)}**\nRequested By: **${cleanse(message.author.tag)}**`)
         .setTimestamp(new Date())
         .setFooter(config.footer);
 
