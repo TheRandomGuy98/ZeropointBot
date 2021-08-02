@@ -30,6 +30,7 @@ const run = async (client: Client, message: Discord.Message, args: string[]) => 
         .setPage(1)
         .setPageIndicator(true)
         .setDisabledNavigationEmojis([`delete`]);
+
     queueEmbed.embed
         .setAuthor(`Server Queue`, message.guild.iconURL())
         .setTimestamp(new Date())
