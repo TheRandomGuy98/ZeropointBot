@@ -1,6 +1,6 @@
 {
-  "name": "zeropointbot",
-  "version": "3.1.0",
+  "name": "@alliance-reunited/zeropointbot",
+  "version": "3.2.0",
   "description": "There's no point to it.",
   "main": "index.js",
   "scripts": {
