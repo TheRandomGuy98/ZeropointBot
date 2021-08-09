@@ -93,7 +93,7 @@
     "@discordjs/node-pre-gyp" "^0.4.0"
     node-addon-api "^3.2.1"
 
-"@discordjs/voice@^0.5.5":
+"@discordjs/voice@^0.5.5", "@discordjs/voice@^0.5.6":
   version "0.5.6"
   resolved "https://registry.yarnpkg.com/@discordjs/voice/-/voice-0.5.6.tgz#78d52567acacab28411fca1dbf8fe3f7b6cc86d3"
   integrity sha512-CGwD5pz1YB8MXfERcXQ6jVCThfMjzPKbad8pYuvPt4ozFcLWGRKFJ5lj+CSRNDj0Cobc6MIKOKpFfOPlXTKTrw==
@@ -744,12 +744,7 @@ discord-api-types@^0.22.0:
   resolved "https://registry.yarnpkg.com/discord-api-types/-/discord-api-types-0.22.0.tgz#34dc57fe8e016e5eaac5e393646cd42a7e1ccc2a"
   integrity sha512-l8yD/2zRbZItUQpy7ZxBJwaLX/Bs2TGaCthRppk8Sw24LOIWg12t9JEreezPoYD0SQcC2htNNo27kYEpYW/Srg==
 
-discord-paginationembed@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/discord-paginationembed/-/discord-paginationembed-2.1.0.tgz#76fde11650645262301cb5cf0ce080e76cd8d989"
-  integrity sha512-a89oag1wm42MNiwwMO2U/NCOh3TFd8VkL3duUB18g4dTIqG6leXIKmgze8ZOALfdpXsvFyhC7Ox45CUa1TIsFA==
-
-discord-player@^5.0.1:
+discord-player@^5.0.2:
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/discord-player/-/discord-player-5.0.2.tgz#3d4e3b669871076b602a744382abcee52296037a"
   integrity sha512-17iTtTExDzX1XXScZ7AmC2eRduLkeFv8o4kYYMMp6YS9IZVH4+/LerEGLdGAO+pVWChWXFIxwHVTinrZjhSU3Q==

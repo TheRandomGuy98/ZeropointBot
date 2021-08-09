@@ -1,7 +1,7 @@
 import config from '../../../config/config';
 
 import * as Discord from 'discord.js';
-import { Client, CommandConfig } from '../../types/discord';
+import { Client, CommandConfig } from '../../typings/discord';
 
 import { cleanse } from '../../utils/functions';
 
@@ -17,9 +17,11 @@ const run = async (client: Client, message: Discord.Message, args: string[]) => 
     if (!message.member.voice.channel) return message.channel.send(`${m} You must be in a voice channel to use this!`);
     if (message.guild.me.voice.channel && message.member.voice.channel.id !== message.guild.me.voice.channel.id) return message.channel.send(`${m} You must be in the same voice channel as me to use this!`);
 
-    if (!client.player.isPlaying(message)) message.channel.send(`${m} There is no song currently playing!`);
+    const queue = client.player.createQueue(message.guild, { metadata: message });
 
-    const song = client.player.nowPlaying(message);
+    if (!queue.current) message.channel.send(`${m} There is no song currently playing!`);
+
+    const song = queue.nowPlaying();
 
     const npEmbed: Discord.MessageEmbed = new Discord.MessageEmbed()
         .setColor(config.colors.blue)
@@ -28,7 +30,7 @@ const run = async (client: Client, message: Discord.Message, args: string[]) => 
         .setTimestamp(new Date())
         .setFooter(config.footer);
 
-    message.channel.send(npEmbed);
+    message.channel.send({ embeds: [npEmbed] });
 };
 
 export {

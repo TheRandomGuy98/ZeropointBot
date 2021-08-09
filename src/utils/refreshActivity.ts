@@ -1,4 +1,4 @@
-import { Client } from '../types/discord';
+import { Client } from '../typings/discord';
 import log from './log';
 
 /**
@@ -8,11 +8,11 @@ import log from './log';
 const refreshActivity = async (client: Client) => {
     log(`cyan`, `Updating status...`);
 
-    await client.user.setPresence({
-        activity: {
+    client.user.setPresence({
+        activities: [{
             name: `${(await (await client.guilds.fetch(`757079346719621150`)).members.fetch()).size} members...`,
             type: `WATCHING`
-        },
+        }],
 
         status: `online`
     });
