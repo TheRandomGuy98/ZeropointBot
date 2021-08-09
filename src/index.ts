@@ -1,7 +1,7 @@
-import * as Discord from 'discord.js';
+import Discord, { Intents } from 'discord.js';
 import { Player } from 'discord-player';
 
-import { Client } from './types/discord';
+import { Client } from './typings/discord';
 
 import log from './utils/log';
 import { cleanse } from './utils/functions';
@@ -15,13 +15,20 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 const client: Client = new Discord.Client({
-    disableMentions: `everyone`
+    intents: [
+        Intents.FLAGS.DIRECT_MESSAGES,
+        Intents.FLAGS.GUILD_BANS,
+        Intents.FLAGS.GUILD_MEMBERS,
+        Intents.FLAGS.GUILD_MESSAGES,
+        Intents.FLAGS.GUILD_VOICE_STATES,
+        Intents.FLAGS.GUILDS
+    ]
 });
 
 const player = new Player(client);
 
 client.player = player;
-client.player.on(`trackStart`, (message: Discord.Message, track) => message.channel.send(`Now playing **${cleanse(track.title)}**...`));
+client.player.on(`trackStart`, (queue, track) => (queue.metadata as Discord.Message).channel.send(`Now playing **${cleanse(track.title)}**...`));
 
 // Uncaught exception handler.
 process.on(`uncaughtException`, e => log(`red`, e.stack));

@@ -1,7 +1,7 @@
 import config from '../../../config/config';
 
 import * as Discord from 'discord.js';
-import { Client, CommandConfig } from '../../types/discord';
+import { Client, CommandConfig } from '../../typings/discord';
 
 import { cleanse, fetchMemberID, fetchMember } from '../../utils/functions';
 import log from '../../utils/log';
@@ -28,8 +28,8 @@ const run = async (client: Client, message: Discord.Message, args: string[]) => 
 
     muteMember.send(`You were muted in **${message.guild.name}** for ${cleanse(muteReason)}.`).catch(() => log(`red`, `Could not DM ${muteMember.user.tag} their mute reason.`));
     muteMember.roles.add(await message.guild.roles.fetch(config.roles.muted)).then(() => {
-        // If they are in a voice channel, kick them.
-        if (muteMember.voice?.channel) muteMember.voice.kick();
+        // If they are in a voice channel, disconnect them.
+        if (muteMember.voice?.channel) muteMember.voice.disconnect();
 
         // Server mute and deafen them.
         muteMember.voice.setMute(true);
@@ -42,9 +42,9 @@ const run = async (client: Client, message: Discord.Message, args: string[]) => 
             .setFooter(config.footer);
 
         message.delete();
-        message.channel.send(sEmbed);
+        message.channel.send({ embeds: [sEmbed] });
 
-        client.channels.fetch(config.logChannel).then((channel: Discord.TextChannel) => channel.send(sEmbed));
+        client.channels.fetch(config.logChannel).then((channel: Discord.TextChannel) => channel.send({ embeds: [sEmbed] }));
     });
 };
 

@@ -26,15 +26,15 @@
   "homepage": "https://github.com/DamienVesper/ZeropointBot#readme",
   "dependencies": {
     "@discordjs/opus": "^0.5.3",
+    "@discordjs/voice": "^0.5.6",
     "axios": "^0.21.1",
     "bufferutil": "^4.0.3",
-    "discord-paginationembed": "^2.1.0",
-    "discord-player": "^4.1.4",
-    "discord.js": "^12.5.3",
+    "discord-player": "^5.0.2",
+    "discord.js": "^13.0.1",
     "dotenv": "^10.0.0",
-    "erlpack": "^0.1.3",
+    "erlpack": "GingkathFox/erlpack",
     "ffmpeg-static": "^4.4.0",
-    "mongoose": "^5.13.4",
+    "mongoose": "^5.13.6",
     "utf-8-validate": "^5.0.5",
     "zlib-sync": "^0.1.7"
   },
@@ -49,5 +49,9 @@
     "eslint-plugin-promise": "^5.1.0",
     "ts-node": "^10.2.0",
     "typescript": "^4.3.5"
+  },
+  "engines": {
+    "node": ">=16.6.0",
+    "yarn": ">=1.22"
   }
 }

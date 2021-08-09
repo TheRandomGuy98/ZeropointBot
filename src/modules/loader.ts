@@ -1,6 +1,6 @@
 import * as path from 'path';
 
-import { Client } from '../types/discord';
+import { Client } from '../typings/discord';
 
 import log from '../utils/log';
 import { logHeader } from '../utils/logExtra';
