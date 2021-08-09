@@ -1,5 +1,5 @@
 import * as Discord from 'discord.js';
-import { Client } from '../../types/discord';
+import { Client } from '../../typings/discord';
 
 import config from '../../../config/config';
 import log from '../../utils/log';
@@ -8,7 +8,7 @@ export default async (client: Client, message: Discord.Message) => {
     const m = `${message.author} »`;
 
     // Botception.
-    if (message.author.bot || message.channel.type === `dm`) return;
+    if (message.author.bot || message.channel.type === `DM`) return;
 
     // We don't have S&Box keys!
     if (message.content.toLowerCase().includes(`s&box`) || message.content.toLowerCase().includes(`sbox`)) {

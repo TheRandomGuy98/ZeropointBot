@@ -1,7 +1,7 @@
 import config from '../../../config/config';
 
 import * as Discord from 'discord.js';
-import { Client, CommandConfig } from '../../types/discord';
+import { Client, CommandConfig } from '../../typings/discord';
 
 import { fetchMemberID, fetchMember } from '../../utils/functions';
 import log from '../../utils/log';
@@ -31,9 +31,9 @@ const run = async (client: Client, message: Discord.Message, args: string[]) => 
             .setFooter(config.footer);
 
         message.delete();
-        message.channel.send(sEmbed);
+        message.channel.send({ embeds: [sEmbed] });
 
-        client.channels.fetch(config.logChannel).then((channel: Discord.TextChannel) => channel.send(sEmbed));
+        client.channels.fetch(config.logChannel).then((channel: Discord.TextChannel) => channel.send({ embeds: [sEmbed] }));
     });
 };
 

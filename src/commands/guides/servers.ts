@@ -1,7 +1,7 @@
 import config from '../../../config/config';
 
 import * as Discord from 'discord.js';
-import { Client, CommandConfig } from '../../types/discord';
+import { Client, CommandConfig } from '../../typings/discord';
 
 const cmd: CommandConfig = {
     desc: `View all servers.`,
@@ -21,7 +21,7 @@ const run = async (client: Client, message: Discord.Message, args: string[]) => 
         .setTimestamp(new Date())
         .setFooter(config.footer);
 
-    message.channel.send(serverEmbed);
+    message.channel.send({ embeds: [serverEmbed] });
 };
 
 export {

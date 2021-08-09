@@ -1,5 +1,5 @@
 import * as Discord from 'discord.js';
-import { Client } from '../../types/discord';
+import { Client } from '../../typings/discord';
 
 import config from '../../../config/config';
 import refreshActivity from '../../utils/refreshActivity';
@@ -15,5 +15,5 @@ export default async (client: Client, member: Discord.GuildMember) => {
         .setTimestamp(new Date())
         .setFooter(config.footer);
 
-    client.channels.fetch(config.logChannel).then((channel: Discord.TextChannel) => channel.send(sEmbed));
+    client.channels.fetch(config.logChannel).then((channel: Discord.TextChannel) => channel.send({ embeds: [sEmbed] }));
 };
