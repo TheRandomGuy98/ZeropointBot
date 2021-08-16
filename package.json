@@ -1,6 +1,6 @@
 {
-  "name": "zeropointbot",
-  "version": "3.1.0",
+  "name": "@alliance-reunited/zeropointbot",
+  "version": "3.2.0",
   "description": "There's no point to it.",
   "main": "index.js",
   "scripts": {
@@ -26,19 +26,19 @@
   "homepage": "https://github.com/DamienVesper/ZeropointBot#readme",
   "dependencies": {
     "@discordjs/opus": "^0.5.3",
-    "@discordjs/voice": "^0.5.6",
+    "@discordjs/voice": "^0.6.0",
     "axios": "^0.21.1",
     "bufferutil": "^4.0.3",
     "discord-player": "^5.0.2",
-    "discord.js": "^13.0.1",
+    "discord.js": "^13.1.0",
     "dotenv": "^10.0.0",
     "ffmpeg-static": "^4.4.0",
-    "mongoose": "^5.13.6",
+    "mongoose": "^5.13.7",
     "utf-8-validate": "^5.0.5",
     "zlib-sync": "^0.1.7"
   },
   "devDependencies": {
-    "@types/node": "^16.4.13",
+    "@types/node": "^16.6.1",
     "@typescript-eslint/eslint-plugin": "^4.29.0",
     "@typescript-eslint/parser": "^4.29.0",
     "eslint": "^7.31.0",
