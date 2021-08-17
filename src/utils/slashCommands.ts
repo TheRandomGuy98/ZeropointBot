@@ -41,7 +41,7 @@ const refreshActivity = async (client: Client, guild: Guild) => {
                     required: false
                 }
             ]
-        },
+        }
 
     ]);
 };
