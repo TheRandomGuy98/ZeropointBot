@@ -14,5 +14,5 @@ export default async (client: Client, interaction: Discord.Interaction) => {
     if (!cmd) return;
 
     log(`magenta`, `${interaction.user.tag} [${interaction.user.id}] ran command ${interaction.commandName} in ${interaction.guild.name}.`);
-    cmd.run(interaction);
+    cmd.run(client, interaction);
 };

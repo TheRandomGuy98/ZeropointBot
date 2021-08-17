@@ -8,7 +8,6 @@ dotenv.config();
 
 const config = {
     developerID: `386940319666667521`,
-    prefix: `!`,
 
     colors,
     roles,
