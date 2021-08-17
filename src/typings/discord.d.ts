@@ -9,7 +9,7 @@ interface CommandConfig {
 }
 
 interface Command {
-    config: CommandConfig;
+    cmd: any;
     run: any;
 }
 

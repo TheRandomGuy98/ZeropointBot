@@ -26,12 +26,7 @@ const loadCommands = async (client: Client) => {
 
         const command = await import(file);
         client.commands.set(fileName, {
-            config: {
-                desc: command.cmd.desc,
-                usage: command.cmd.usage || null,
-                aliases: command.cmd.aliases || null,
-                category: command.cmd.category
-            },
+            cmd: command.cmd.toJSON(),
             run: command.run
         });
     }
