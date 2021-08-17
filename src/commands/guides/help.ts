@@ -1,13 +1,12 @@
 import config from '../../../config/config';
+import { Client } from '../../typings/discord';
 
 import * as Discord from 'discord.js';
-import { Client, CommandConfig } from '../../typings/discord';
+import { SlashCommandBuilder } from '@discordjs/builders';
 
-const cmd: CommandConfig = {
-    desc: `View all commands.`,
-    aliases: [`h`, `?`],
-    category: `guides`
-};
+const cmd: SlashCommandBuilder = new SlashCommandBuilder()
+    .setName(`help`)
+    .setDescription(`View all commands.`);
 
 const run = async (client: Client, interaction: Discord.CommandInteraction) => {
     const sEmbed: Discord.MessageEmbed = new Discord.MessageEmbed()

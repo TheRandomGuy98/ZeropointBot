@@ -90,7 +90,7 @@ const deploySlashCommands = async (client: Client, guild: Guild) => {
                 }
             ]
         }
-    ]);
+    ]).catch(err => console.log(err));
 
     log(`green`, `Deployed slash commands.`);
 };

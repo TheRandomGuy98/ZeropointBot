@@ -1,16 +1,20 @@
 import config from '../../../config/config';
+import { Client } from '../../typings/discord';
 
 import * as Discord from 'discord.js';
-import { Client, CommandConfig } from '../../typings/discord';
+import { SlashCommandBuilder } from '@discordjs/builders';
 
 import { fetchMemberID, fetchMember } from '../../utils/functions';
 import log from '../../utils/log';
 
-const cmd: CommandConfig = {
-    desc: `Unmute a user.`,
-    usage: `<user>`,
-    category: `moderation`
-};
+const cmd = new SlashCommandBuilder()
+    .setName(`unmute`)
+    .setDescription(`Unmute a user.`)
+    .addUserOption(option => option
+        .setName(`user`)
+        .setDescription(`The user to unmute.`)
+        .setRequired(true)
+    );
 
 const run = async (client: Client, message: Discord.Message, args: string[]) => {
     const m = `${message.author} »`;

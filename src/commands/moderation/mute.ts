@@ -1,16 +1,25 @@
 import config from '../../../config/config';
+import { Client } from '../../typings/discord';
 
 import * as Discord from 'discord.js';
-import { Client, CommandConfig } from '../../typings/discord';
+import { SlashCommandBuilder } from '@discordjs/builders';
 
 import { cleanse, fetchMemberID, fetchMember } from '../../utils/functions';
 import log from '../../utils/log';
 
-const cmd: CommandConfig = {
-    desc: `Mute a user.`,
-    usage: `<user> [reason]`,
-    category: `moderation`
-};
+const cmd = new SlashCommandBuilder()
+    .setName(`mute`)
+    .setDescription(`Mute a user.`)
+    .addUserOption(option => option
+        .setName(`user`)
+        .setDescription(`The user to mute.`)
+        .setRequired(true)
+    )
+    .addStringOption(option => option
+        .setName(`reason`)
+        .setDescription(`The reason for muting the user.`)
+        .setRequired(false)
+    );
 
 const run = async (client: Client, message: Discord.Message, args: string[]) => {
     const m = `${message.author} »`;

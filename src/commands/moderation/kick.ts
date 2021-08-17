@@ -1,16 +1,25 @@
 import config from '../../../config/config';
+import { Client } from '../../typings/discord';
 
 import * as Discord from 'discord.js';
-import { Client, CommandConfig } from '../../typings/discord';
+import { SlashCommandBuilder } from '@discordjs/builders';
 
 import { cleanse, fetchMemberID, fetchMember } from '../../utils/functions';
 import log from '../../utils/log';
 
-const cmd: CommandConfig = {
-    desc: `Kick a user.`,
-    usage: `<user> [reason]`,
-    category: `moderation`
-};
+const cmd = new SlashCommandBuilder()
+    .setName(`kick`)
+    .setDescription(`Kick a user.`)
+    .addUserOption(option => option
+        .setName(`user`)
+        .setDescription(`The user to kick.`)
+        .setRequired(true)
+    )
+    .addStringOption(option => option
+        .setName(`reason`)
+        .setDescription(`The reason for kicking the user.`)
+        .setRequired(false)
+    );
 
 const run = async (client: Client, message: Discord.Message, args: string[]) => {
     const m = `${message.author} »`;

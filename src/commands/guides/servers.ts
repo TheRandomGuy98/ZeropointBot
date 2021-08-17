@@ -1,12 +1,12 @@
 import config from '../../../config/config';
+import { Client } from '../../typings/discord';
 
 import * as Discord from 'discord.js';
-import { Client, CommandConfig } from '../../typings/discord';
+import { SlashCommandBuilder } from '@discordjs/builders';
 
-const cmd: CommandConfig = {
-    desc: `View all servers.`,
-    category: `guides`
-};
+const cmd: SlashCommandBuilder = new SlashCommandBuilder()
+    .setName(`servers`)
+    .setDescription(`View all gameservers.`);
 
 const run = async (client: Client, message: Discord.Message, args: string[]) => {
     const serverEmbed: Discord.MessageEmbed = new Discord.MessageEmbed()
