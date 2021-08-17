@@ -1,7 +1,7 @@
 import * as Discord from 'discord.js';
-import { Client, CommandConfig } from '../../typings/discord';
+import { Client, CommandConfig } from '../../src/typings/discord';
 
-import { cleanse } from '../../utils/functions';
+import { cleanse } from '../../src/utils/functions';
 
 const cmd: CommandConfig = {
     desc: `Skip the current song.`,

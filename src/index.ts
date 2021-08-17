@@ -12,6 +12,7 @@ import * as loader from './modules/loader';
 import mongoose from 'mongoose';
 
 import * as dotenv from 'dotenv';
+import deploySlashCommands from './utils/slashCommands';
 dotenv.config();
 
 const client: Client = new Discord.Client({
@@ -51,8 +52,11 @@ const startBot = async () => {
     });
 
     log(`green`, `Connected to database.`);
-
     logExtra.logHeader();
+
+    await deploySlashCommands(client, await client.guilds.fetch(`757079346719621150`));
+    logExtra.logHeader();
+
     await client.login(process.env.DISCORD_TOKEN).catch(() => log(`red`, `Failed to authenticate client with application.`));
 };
 
