@@ -2,6 +2,7 @@
   "name": "@alliance-reunited/zeropointbot",
   "version": "3.2.0",
   "description": "There's no point to it.",
+  "private": true,
   "main": "index.js",
   "scripts": {
     "build": "tsc",
