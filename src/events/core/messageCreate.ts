@@ -5,8 +5,6 @@ import config from '../../../config/config';
 import log from '../../utils/log';
 
 export default async (client: Client, message: Discord.Message) => {
-    const m = `${message.author} »`;
-
     // Botception.
     if (message.author.bot || message.channel.type === `DM`) return;
 
@@ -30,7 +28,7 @@ export default async (client: Client, message: Discord.Message) => {
 
     if (!cmd) return;
 
-    if ((cmd.config.usage) && args.length < (cmd.config.usage.split(`<`).length) - 1) return message.channel.send(`${m} Proper usage is \`${config.prefix + command} ${cmd.config.usage}\`.`);
+    if ((cmd.config.usage) && args.length < (cmd.config.usage.split(`<`).length) - 1) return message.reply(`Proper usage is \`${config.prefix + command} ${cmd.config.usage}\`.`);
     else {
         // Execute the command.
         log(`magenta`, `${message.author.tag} [${message.author.id}] ran command ${command} in ${message.guild.name}.`);

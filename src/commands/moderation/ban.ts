@@ -13,14 +13,13 @@ const cmd: CommandConfig = {
 };
 
 const run = async (client: Client, message: Discord.Message, args: string[]) => {
-    const m = `${message.author} »`;
     const banMember: Discord.GuildMember = await fetchMember(message, args, await fetchMemberID(message, args));
 
-    if (!message.member.permissions.has(`BAN_MEMBERS`)) return message.channel.send(`${m} You can't use that!`);
-    else if (!banMember) return message.channel.send(`${m} That person is not a member of the server!`);
+    if (!message.member.permissions.has(`BAN_MEMBERS`)) return message.reply(`You can't use that!`);
+    else if (!banMember) return message.reply(`That person is not a member of the server!`);
 
-    else if (banMember.id === message.author.id) return message.channel.send(`You cannot ban yourself!`);
-    else if (!banMember.bannable || banMember.roles.cache.some(role => role.name.includes(`Staff`))) return message.channel.send(`${m} I cannot ban that user!`);
+    else if (banMember.id === message.author.id) return message.reply(`You cannot ban yourself!`);
+    else if (!banMember.bannable || banMember.roles.cache.some(role => role.name.includes(`Staff`))) return message.reply(`I cannot ban that user!`);
 
     args.shift();
 
@@ -35,7 +34,7 @@ const run = async (client: Client, message: Discord.Message, args: string[]) => 
             .setFooter(config.footer);
 
         message.delete();
-        return message.channel.send({ embeds: [sEmbed] });
+        return message.reply({ embeds: [sEmbed] });
     });
 };
 

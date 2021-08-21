@@ -21,7 +21,7 @@ const run = async (client: Client, message: Discord.Message, args: string[]) => 
         .setTimestamp(new Date())
         .setFooter(config.footer);
 
-    message.channel.send({ embeds: [serverEmbed] });
+    message.reply({ embeds: [serverEmbed] });
 };
 
 export {

@@ -11,15 +11,13 @@ const cmd: CommandConfig = {
 };
 
 const run = async (client: Client, message: Discord.Message, args: string[]) => {
-    const m = `${message.author} »`;
-
     fs.readdir(path.resolve(__dirname, `../../../assets/img/burrito`), (err, files) => {
         if (err) throw err;
         const rng = Math.floor(Math.random() * files.length) + 1;
 
-        message.channel.send({
+        message.reply({
             files: [path.resolve(__dirname, `../../../assets/img/burrito/${rng}.png`)],
-            content: `${m} Coelus wants a breakfast burrito? Whaaat?!`
+            content: `Coelus wants a breakfast burrito? Whaaat?!`
         });
     });
 };
