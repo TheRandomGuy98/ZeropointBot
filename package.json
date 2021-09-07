@@ -28,7 +28,7 @@
   "dependencies": {
     "@discordjs/opus": "^0.6.0",
     "@discordjs/voice": "^0.6.0",
-    "axios": "^0.21.3",
+    "axios": "^0.21.4",
     "bufferutil": "^4.0.3",
     "discord-player": "^5.1.0",
     "discord.js": "^13.1.0",
@@ -39,8 +39,8 @@
     "zlib-sync": "^0.1.7"
   },
   "devDependencies": {
-    "@types/node": "^16.7.10",
-    "@typescript-eslint/eslint-plugin": "^4.30.0",
+    "@types/node": "^16.7.13",
+    "@typescript-eslint/eslint-plugin": "^4.31.0",
     "@typescript-eslint/parser": "^4.31.0",
     "eslint": "^7.31.0",
     "eslint-config-standard": "^16.0.3",
