@@ -34,14 +34,14 @@
     "discord.js": "^13.1.0",
     "dotenv": "^10.0.0",
     "ffmpeg-static": "^4.4.0",
-    "mongoose": "^6.0.8",
+    "mongoose": "^6.0.9",
     "utf-8-validate": "^5.0.6",
     "zlib-sync": "^0.1.7"
   },
   "devDependencies": {
     "@types/node": "^16.10.2",
     "@typescript-eslint/eslint-plugin": "^4.33.0",
-    "@typescript-eslint/parser": "^4.32.0",
+    "@typescript-eslint/parser": "^4.33.0",
     "eslint": "^7.31.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.24.2",
