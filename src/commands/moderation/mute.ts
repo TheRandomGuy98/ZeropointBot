@@ -15,12 +15,12 @@ const cmd: CommandConfig = {
 const run = async (client: Client, message: Discord.Message, args: string[]) => {
     const muteMember: Discord.GuildMember = await fetchMember(message, args, await fetchMemberID(message, args));
 
-    if (!message.member.permissions.has(`VIEW_AUDIT_LOG`)) return message.reply(`You can't use that!`);
-    else if (!muteMember) return message.reply(`That person is not a member of the server!`);
-    else if (muteMember.roles.cache.some(role => role.name === `Muted`)) return message.reply(`That person is already muted!`);
+    if (!message.member.permissions.has(`VIEW_AUDIT_LOG`)) return await message.reply(`You can't use that!`);
+    else if (!muteMember) return await message.reply(`That person is not a member of the server!`);
+    else if (muteMember.roles.cache.some(role => role.name === `Muted`)) return await message.reply(`That person is already muted!`);
 
-    else if (muteMember.id === message.author.id) return message.reply(`You cannot mute yourself!`);
-    else if (muteMember.roles.cache.some(role => role.name.includes(`Staff`))) return message.reply(`I cannot mute that user!`);
+    else if (muteMember.id === message.author.id) return await message.reply(`You cannot mute yourself!`);
+    else if (muteMember.roles.cache.some(role => role.name.includes(`Staff`))) return await message.reply(`I cannot mute that user!`);
 
     args.shift();
     const muteReason = args.join(` `) || `No reason provided.`;
@@ -28,7 +28,7 @@ const run = async (client: Client, message: Discord.Message, args: string[]) => 
     muteMember.send(`You were muted in **${message.guild.name}** for ${cleanse(muteReason)}.`).catch(() => log(`red`, `Could not DM ${muteMember.user.tag} their mute reason.`));
     muteMember.roles.add(await message.guild.roles.fetch(config.roles.muted)).then(() => {
         // If they are in a voice channel, disconnect them.
-        if (muteMember.voice?.channel) muteMember.voice.disconnect();
+        if ((muteMember.voice?.channel) != null) muteMember.voice.disconnect();
 
         // Server mute and deafen them.
         muteMember.voice.setMute(true);
@@ -43,7 +43,7 @@ const run = async (client: Client, message: Discord.Message, args: string[]) => 
         message.delete();
         message.reply({ embeds: [sEmbed] });
 
-        client.channels.fetch(config.logChannel).then((channel: Discord.TextChannel) => channel.send({ embeds: [sEmbed] }));
+        client.channels.fetch(config.logChannel).then(async (channel: Discord.TextChannel) => await channel.send({ embeds: [sEmbed] }));
     });
 };
 

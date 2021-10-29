@@ -26,17 +26,17 @@ const run = async (client: Client, message: Discord.Message, args: string[]) => 
             .setDescription(helpTxt)
             .setTimestamp(new Date())
             .setFooter(config.footer);
-        return message.reply({ embeds: [sEmbed] });
+        return await message.reply({ embeds: [sEmbed] });
     }
 
     const commandName = args[0].toLowerCase();
-    const command = client.commands.get(commandName) ||
+    const command = (client.commands.get(commandName) != null) ||
         client.commands.get([...client.commands.keys()][[...client.commands.values()].indexOf([...client.commands.values()].find(cmd => cmd.config.aliases?.includes(commandName)))]);
 
-    if (!command) return message.reply(`That is not a valid command!`);
+    if (command == null) return await message.reply(`That is not a valid command!`);
 
     if (command.config.usage) data.push(`**Usage:** \`${config.prefix}${commandName} ${command.config.usage}\``);
-    if (command.config.aliases) data.push(`**Aliases:** ${command.config.aliases.join(`, `)}`);
+    if (command.config.aliases != null) data.push(`**Aliases:** ${command.config.aliases.join(`, `)}`);
 
     const sEmbed: Discord.MessageEmbed = new Discord.MessageEmbed()
         .setColor(config.colors.blue)

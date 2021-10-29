@@ -15,17 +15,17 @@ const cmd: CommandConfig = {
 const run = async (client: Client, message: Discord.Message, args: string[]) => {
     const kickMember: Discord.GuildMember = await fetchMember(message, args, await fetchMemberID(message, args));
 
-    if (!message.member.permissions.has(`KICK_MEMBERS`)) return message.reply(`ou can't use that!`);
-    else if (!kickMember) return message.reply(`That person is not a member of the server!`);
+    if (!message.member.permissions.has(`KICK_MEMBERS`)) return await message.reply(`ou can't use that!`);
+    else if (!kickMember) return await message.reply(`That person is not a member of the server!`);
 
-    else if (kickMember.id === message.author.id) return message.reply(`You cannot kick yourself!`);
-    else if (!kickMember.kickable || kickMember.roles.cache.some(role => role.name.includes(`Staff`))) return message.reply(`I cannot kick that user!`);
+    else if (kickMember.id === message.author.id) return await message.reply(`You cannot kick yourself!`);
+    else if (!kickMember.kickable || kickMember.roles.cache.some(role => role.name.includes(`Staff`))) return await message.reply(`I cannot kick that user!`);
 
     args.shift();
     const kickReason = args.join(` `) || `No reason provided.`;
 
     kickMember.send(`You were kicked from **${message.guild.name}** for ${cleanse(kickReason)}.`).catch(() => log(`red`, `Could not DM ${kickMember.user.tag} their kick reason.`));
-    kickMember.kick(kickReason).then(() => {
+    kickMember.kick(kickReason).then(async () => {
         const sEmbed: Discord.MessageEmbed = new Discord.MessageEmbed()
             .setAuthor(`Member Kicked | ${kickMember.user.tag}`, message.author.avatarURL())
             .setColor(config.colors.red)
@@ -33,7 +33,7 @@ const run = async (client: Client, message: Discord.Message, args: string[]) => 
             .setFooter(config.footer);
 
         message.delete();
-        return message.reply({ embeds: [sEmbed] });
+        return await message.reply({ embeds: [sEmbed] });
     });
 };
 

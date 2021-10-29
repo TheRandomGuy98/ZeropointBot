@@ -3,14 +3,14 @@ import { author, version } from '../../package.json';
 /**
  * Log a header to the console.
  */
-const logHeader = () => {
+const logHeader = (): void => {
     console.log(`\x1b[34m`, `--------------------------------------------------`);
 };
 
 /**
  * Log the splash screen.
  */
-const logSplash = () => {
+const logSplash = (): void => {
     console.log(`\x1b[34m`, `
     
     ███████╗██████╗       ██████╗  ██████╗ ████████╗

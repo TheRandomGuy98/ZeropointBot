@@ -15,9 +15,9 @@ const cmd: CommandConfig = {
 const run = async (client: Client, message: Discord.Message, args: string[]) => {
     const unmuteMember: Discord.GuildMember = await fetchMember(message, args, await fetchMemberID(message, args));
 
-    if (!message.member.permissions.has(`VIEW_AUDIT_LOG`)) return message.reply(`You can't use that!`);
-    else if (!unmuteMember) return message.reply(`That person is not a member of the server!`);
-    else if (!unmuteMember.roles.cache.some(role => role.name === `Muted`)) return message.reply(`That person is not muted!`);
+    if (!message.member.permissions.has(`VIEW_AUDIT_LOG`)) return await message.reply(`You can't use that!`);
+    else if (!unmuteMember) return await message.reply(`That person is not a member of the server!`);
+    else if (!unmuteMember.roles.cache.some(role => role.name === `Muted`)) return await message.reply(`That person is not muted!`);
 
     args.shift();
 
@@ -32,7 +32,7 @@ const run = async (client: Client, message: Discord.Message, args: string[]) => 
         message.delete();
         message.reply({ embeds: [sEmbed] });
 
-        client.channels.fetch(config.logChannel).then((channel: Discord.TextChannel) => channel.send({ embeds: [sEmbed] }));
+        client.channels.fetch(config.logChannel).then(async (channel: Discord.TextChannel) => await channel.send({ embeds: [sEmbed] }));
     });
 };
 

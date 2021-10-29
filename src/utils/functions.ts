@@ -5,7 +5,7 @@ import Discord from 'discord.js';
  * @param str The string to cleanse.
  * @returns string
  */
-const cleanse = (str: string) => {
+const cleanse = (str: string): string => {
     return str
         .replace(`\`\`\``, `\\\`\\\`\\\``)
         .replace(`\``, `\\\``)
@@ -22,7 +22,13 @@ const cleanse = (str: string) => {
  * @param args The arguments used in the command.
  * @returns Promise<string>
  */
-const fetchMemberID = async (message: Discord.Message, args: string[]) => (message.mentions.members.first()?.id || args[0]);
+const fetchMemberID = async (message: Discord.Message, args: string[]): Promise<string | null | undefined> => {
+    return ((message?.mentions?.members?.first()) != null)
+        ? message.mentions.members?.first()?.id
+        : args[0] != null
+            ? args[0]
+            : null;
+};
 
 /**
  * Fetch a member from the data supplied.
@@ -30,13 +36,17 @@ const fetchMemberID = async (message: Discord.Message, args: string[]) => (messa
  * @param args The arguments used in the command.
  * @returns Promise<Discord.GuildMember>
  */
-const fetchMember = async (message: Discord.Message, args: string[], id: string) => {
-    return (await message.guild.members.fetch()).find(member => {
-        return member.user.username === args[0] ||
-            member.nickname === args[0] ||
-            member.id === args[0] ||
-            member.id === id;
-    });
+const fetchMember = async (message: Discord.Message, args: string[], id: string): Promise<Discord.GuildMember | undefined> => {
+    const members = await message.guild?.members?.fetch();
+    if (members === undefined) return undefined;
+    else {
+        members.find(member => {
+            return member.user.username === args[0] ||
+                member.nickname === args[0] ||
+                member.id === args[0] ||
+                member.id === id;
+        });
+    }
 };
 
 export {

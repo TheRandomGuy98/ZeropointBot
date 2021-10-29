@@ -28,22 +28,22 @@ const client: Client = new Discord.Client({
 const player = new Player(client);
 
 client.player = player;
-client.player.on(`trackStart`, (queue, track) => (queue.metadata as Discord.Message).channel.send(`Now playing **${cleanse(track.title)}**...`));
+client.player.on(`trackStart`, async (queue, track) => await (queue.metadata as Discord.Message).channel.send(`Now playing **${cleanse(track.title)}**...`));
 
 // Uncaught exception handler.
-process.on(`uncaughtException`, e => log(`red`, e.stack));
+process.on(`uncaughtException`, e => log(`red`, String(e)));
 
 /**
  * Start up the bot.
  */
-const startBot = async () => {
+const startBot = async (): Promise<void> => {
     logExtra.logSplash();
 
     await loader.loadCommands(client);
     await loader.loadEvents(client);
 
     logExtra.logHeader();
-    await mongoose.connect(process.env.MONGODB_URI);
+    await mongoose.connect((process.env.MONGODB_URI as string));
 
     log(`green`, `Connected to database.`);
 
@@ -52,4 +52,4 @@ const startBot = async () => {
 };
 
 // Initialize the project.
-startBot();
+void startBot();

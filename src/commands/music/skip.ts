@@ -1,6 +1,7 @@
+import { Player } from 'discord-player';
 import * as Discord from 'discord.js';
-import { Client, CommandConfig } from '../../typings/discord';
 
+import { Client, CommandConfig } from '../../typings/discord';
 import { cleanse } from '../../utils/functions';
 
 const cmd: CommandConfig = {
@@ -9,15 +10,25 @@ const cmd: CommandConfig = {
     category: `music`
 };
 
-const run = async (client: Client, message: Discord.Message, args: string[]) => {
-    if (!message.member.voice.channel) return message.reply(`You must be in a voice channel to use this!`);
-    if (message.guild.me.voice.channel && message.member.voice.channel.id !== message.guild.me.voice.channel.id) return message.reply(`You must be in the same voice channel as me to use this!`);
+const run = async (client: Client, message: Discord.Message, args: string[]): Promise<void> => {
+    if (message?.member?.voice.channel == null) {
+        await message.reply(`You must be in a voice channel to use this!`);
+        return;
+    }
 
-    const queue = client.player.createQueue(message.guild, { metadata: message });
+    if ((message?.guild?.me?.voice.channel != null) && message.member.voice.channel.id !== message.guild.me.voice.channel.id) {
+        await message.reply(`You must be in the same voice channel as me to use this!`);
+        return;
+    }
 
-    if (!queue.current) return message.reply(`There is no song currently playing!`);
+    const queue = (client.player as Player).createQueue((message.guild as Discord.GuildResolvable), { metadata: message });
 
-    message.reply(`Skipped song **${cleanse(queue.nowPlaying().title)}**.`);
+    if (queue.current == null) {
+        await message.reply(`There is no song currently playing!`);
+        return;
+    }
+
+    await message.reply(`Skipped song **${cleanse(queue.nowPlaying().title)}**.`);
     queue.skip();
 };
 

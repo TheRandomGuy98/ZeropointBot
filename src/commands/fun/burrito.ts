@@ -12,7 +12,7 @@ const cmd: CommandConfig = {
 
 const run = async (client: Client, message: Discord.Message, args: string[]) => {
     fs.readdir(path.resolve(__dirname, `../../../assets/img/burrito`), (err, files) => {
-        if (err) throw err;
+        if (err != null) throw err;
         const rng = Math.floor(Math.random() * files.length) + 1;
 
         message.reply({

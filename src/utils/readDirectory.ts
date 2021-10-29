@@ -7,7 +7,7 @@ import * as path from 'path';
  * @param dir The absolute path to the directory.
  * @returns An array representation of the directory's contents.
  */
-const readDirectory = (dir: any) => {
+const readDirectory = (dir: string): string[] => {
     let results: string[] = [];
     const files = fs.readdirSync(dir);
 

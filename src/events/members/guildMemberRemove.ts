@@ -4,19 +4,19 @@ import { Client } from '../../typings/discord';
 import config from '../../../config/config';
 import refreshActivity from '../../utils/refreshActivity';
 
-export default async (client: Client, member: Discord.GuildMember) => {
-    refreshActivity(client);
+export default async (client: Client, member: Discord.GuildMember): Promise<void> => {
+    await refreshActivity(client);
 
     const memberIsBanned = member.guild.bans.fetch().then(bans => bans.find(ban => ban.user.id === member.user.id));
-    if (memberIsBanned) return;
+    if (memberIsBanned == null) return;
 
     const sEmbed: Discord.MessageEmbed = new Discord.MessageEmbed()
         .setAuthor(`Member Left | ${member.user.tag}`)
-        .setThumbnail(member.user.avatarURL())
+        .setThumbnail((member.user.avatarURL() as string))
         .setColor(config.colors.red)
-        .setDescription(`${member.user} left or was kicked from the server.`)
+        .setDescription(`<@${member.user.id}> left or was kicked from the server.`)
         .setTimestamp(new Date())
         .setFooter(config.footer);
 
-    client.channels.fetch(config.logChannel).then((channel: Discord.TextChannel) => channel.send({ embeds: [sEmbed] }));
+    await client.channels.fetch(config.logChannel).then(async (channel: Discord.TextChannel) => await channel.send({ embeds: [sEmbed] }));
 };
