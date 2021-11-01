@@ -27,7 +27,7 @@
   "homepage": "https://github.com/DamienVesper/ZeropointBot#readme",
   "dependencies": {
     "@discordjs/opus": "^0.6.0",
-    "@discordjs/voice": "^0.6.0",
+    "@discordjs/voice": "^0.7.2",
     "axios": "^0.24.0",
     "bufferutil": "^4.0.4",
     "discord-player": "^5.1.0",
