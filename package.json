@@ -2,7 +2,7 @@
   "name": "@alliance-reunited/zeropointbot",
   "description": "There's no point to it.",
   "packageManager": "yarn@3.1.0",
-  "version": "3.3.0",
+  "version": "3.4.0",
   "private": true,
   "main": "src/index.ts",
   "scripts": {
