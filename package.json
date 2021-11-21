@@ -11,9 +11,13 @@
     "dev": "ts-node ./src/index.ts",
     "dev:lint": "eslint . --fix --ext .ts"
   },
+  "engines": {
+    "yarn": ">=3.1.0",
+    "node": ">=16.10.0"
+  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DamienVesper/ZeropointBot.git"
+    "url": "git+https://github.com/Alliance-Reunited/ZeropointBot.git"
   },
   "keywords": [
     "typescript",
@@ -23,9 +27,9 @@
   "author": "DamienVesper",
   "license": "AGPL-3.0",
   "bugs": {
-    "url": "https://github.com/DamienVesper/ZeropointBot/issues"
+    "url": "https://github.com/Alliance-Reunited/ZeropointBot/issues"
   },
-  "homepage": "https://github.com/DamienVesper/ZeropointBot#readme",
+  "homepage": "https://github.com/Alliance-Reunited/ZeropointBot#readme",
   "dependencies": {
     "@discordjs/opus": "^0.7.0",
     "@discordjs/voice": "^0.7.5",
@@ -51,9 +55,5 @@
     "eslint-plugin-promise": "^5.1.1",
     "ts-node": "^10.4.0",
     "typescript": "^4.5.2"
-  },
-  "engines": {
-    "node": ">=16.6.0",
-    "yarn": ">=1.22"
   }
 }
