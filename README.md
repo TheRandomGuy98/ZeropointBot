@@ -1,17 +1,26 @@
-<h1 align="center">Zeropoint Bot</h1>
-
-<h3 align="center">A moderation bot for the Alliance Reunited Discord server.</h3>
-<br>
+<div align="center">
+    <h1>ZeropointBot</h1>
+    <h3>A moderation and systems utility bot for the Alliance Reunited Discord server.</h3>
+</div>
+<br />
 
 <p align="center">
     <img src="https://img.shields.io/github/v/release/DamienVesper/ZeropointBot?style=for-the-badge&color=f82055&include_prereleases">
     <img src="https://img.shields.io/github/last-commit/DamienVesper/ZeropointBot?style=for-the-badge&color=f82055">
     <img src="https://img.shields.io/github/languages/code-size/DamienVesper/ZeropointBot?style=for-the-badge&color=f82055">
 </p>
+<br />
 
+## Installation
+This project utilizes [Yarn](https://yarnpkg.com). No other package manager is supported for this project.
+To install dependencies for this project, open a command line interface at the directory of the cloned repository, and run:
+```sh
+yarn
+```
 
-**Local Bot Development Setup**
-<br>
+This will create a `node_modules` directory in that of your project and add the packages there.
+
+## Setup
 Testing the application using a database on your own machine will require a localhost database setup:
 
 1. Create a `.env` in the root directory of the repository.
@@ -22,10 +31,9 @@ MONGO_URI="<uri>"
 ```
 Replace `<uri>` and `<discord bot token>` with your MongoDB URI and Discord bot token.
 
-**Running The Bot**
+## Development
 ```
-npm i
-npm run dev
+yarn dev
 ```
 
 Note: You will need MongoDB and Node.js installed (with npm v7) to be able to build and run the bot.
