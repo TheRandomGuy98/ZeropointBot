@@ -1,18 +1,18 @@
 {
   "name": "@alliance-reunited/zeropointbot",
   "description": "There's no point to it.",
-  "packageManager": "yarn@3.1.0",
-  "version": "3.4.1",
+  "version": "3.4.2",
   "private": true,
   "main": "src/index.ts",
   "scripts": {
     "build": "tsc",
     "start": "node ./build/src/index.js",
     "dev": "ts-node ./src/index.ts",
-    "dev:lint": "eslint . --fix --ext .ts"
+    "dev:lint": "eslint . --fix --ext .ts",
+    "dev:lint:ci": "eslint . --ext .ts"
   },
   "engines": {
-    "yarn": ">=3.1.0",
+    "pnpm": ">=6.20.3",
     "node": ">=16.10.0"
   },
   "repository": {
@@ -39,15 +39,15 @@
     "discord.js": "^13.3.1",
     "dotenv": "^10.0.0",
     "ffmpeg-static": "^4.4.0",
-    "mongoose": "^6.0.14",
+    "mongoose": "^6.0.15",
     "opusscript": "^0.0.8",
     "utf-8-validate": "^5.0.7",
     "zlib-sync": "^0.1.7"
   },
   "devDependencies": {
     "@types/node": "^16.11.11",
-    "@typescript-eslint/eslint-plugin": "^5.5.0",
-    "@typescript-eslint/parser": "^5.5.0",
+    "@typescript-eslint/eslint-plugin": "^5.6.0",
+    "@typescript-eslint/parser": "^5.6.0",
     "eslint": "^8.4.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.25.3",
