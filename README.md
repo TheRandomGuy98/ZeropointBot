@@ -13,6 +13,7 @@
 
 ## Installation
 This project utilizes [pnpm](https://pnpm.io). No other package manager is supported for this project.
+
 To install dependencies for this project, open a command line interface at the directory of the cloned repository, and run:
 ```sh
 pnpm install
